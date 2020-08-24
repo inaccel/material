@@ -1,3 +1,3 @@
 $(window).load(function() {
-  $("#load").fadeOut("slow", "linear");
+  $('#load').fadeOut('slow', 'linear');
 });
