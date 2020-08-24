@@ -160,6 +160,10 @@ small {
   line-height: 1.3;
 }
 
+.md-typeset > .codehilite, .md-typeset > .highlight {
+  margin: 0;
+}
+
 .md-typeset__table {
   display: block;
 }

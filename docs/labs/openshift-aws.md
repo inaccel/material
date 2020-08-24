@@ -258,7 +258,7 @@ into the related field and click **Create**.
 	      app: ${APPLICATION_NAME}
 	      deploymentconfig: ${APPLICATION_NAME}
 	    type: ClusterIP
-		```
+	```
 
 Having loaded the image stream definitions, **InAccel Jupyter App** will now be
 able to be selected from the catalog of applications that can be installed from
