@@ -1,0 +1,10 @@
+.md-youtube {
+  padding-bottom: 50%;
+  position: relative;
+}
+
+.md-youtube__video {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}

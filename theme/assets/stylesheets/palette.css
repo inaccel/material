@@ -1,0 +1,91 @@
+[data-md-color-primary="inaccel"] {
+  --md-primary-fg-color:              rgba(55, 96, 146, 1);
+  --md-primary-fg-color--light:       rgba(55, 96, 146, 0.5);
+  --md-primary-fg-color--dark:        rgba(55, 96, 146, 0.1);
+
+  --md-primary-fg-color--transparent: var(--md-accent-fg-color--light);
+
+  --md-primary-bg-color:              hsla(0, 0%, 100%, 1);
+  --md-primary-bg-color--light:       hsla(0, 0%, 100%, 0.7);
+}
+
+[data-md-color-accent="inaccel"] {
+  --md-accent-fg-color:               rgba(39, 138, 66, 1);
+  --md-accent-fg-color--light:        rgba(39, 138, 66, 0.5);
+  --md-accent-fg-color--dark:         rgba(39, 138, 66, 0.1);
+
+  --md-accent-fg-color--transparent:  var(--md-primary-fg-color--light);
+
+  --md-accent-bg-color:               hsla(0, 0%, 100%, 1);
+  --md-accent-bg-color--light:        hsla(0, 0%, 100%, 0.7);
+}
+
+[data-md-color-scheme="default"] {
+  --md-default-fg-color:              rgba(51, 68, 76, 1);
+  --md-default-fg-color--light:       rgba(51, 68, 76, 0.9);
+  --md-default-fg-color--lighter:     rgba(51, 68, 76, 0.7);
+  --md-default-fg-color--lightest:    rgba(51, 68, 76, 0.1);
+
+  --md-default-bg-color:              rgba(255, 255, 255, 1);
+  --md-default-bg-color--light:       rgba(255, 255, 255, 0.7);
+  --md-default-bg-color--lighter:     rgba(255, 255, 255, 0.3);
+  --md-default-bg-color--lightest:    rgba(224, 228, 231, 1);
+
+  --md-code-bg-color:                 rgba(245, 248, 250, 1);
+  --md-code-fg-color:                 var(--md-primary-fg-color);
+
+  --md-text-color:                    var(--md-default-fg-color--light);
+  --md-text-link-color:               var(--md-primary-fg-color);
+
+  --md-admonition-bg-color:           var(--md-default-bg-color);
+  --md-admonition-fg-color:           var(--md-default-fg-color);
+
+  --md-table-fg-color:                rgba(51, 68, 76, 1);
+  --md-table-bg-color:                rgba(207, 210, 212, 1);
+
+  --md-sidebar-bg-color:              rgba(251, 251, 252, 1);
+
+  --md-typeset-a-color:               var(--md-primary-fg-color);
+  --md-typeset-a-color--action:       var(--md-accent-fg-color);
+
+  --md-footer-bg-color:               rgba(255, 255, 255, 1);
+  --md-footer-bg-color--dark:         var(--md-default-bg-color);
+  --md-footer-fg-color:               var(--md-default-fg-color);
+  --md-footer-fg-color--light:        var(--md-primary-fg-color);
+  --md-footer-fg-color--lighter:      rgba(13, 86, 125, 0.55);
+}
+
+[data-md-color-scheme="slate"] {
+  --md-default-fg-color:              rgba(211, 212, 212, 1);
+  --md-default-fg-color--light:       rgba(211, 212, 212, 0.9);
+  --md-default-fg-color--lighter:     rgba(211, 212, 212, 0.7);
+  --md-default-fg-color--lightest:    rgba(211, 212, 212, 0.1);
+
+  --md-default-bg-color:              rgba(6, 31, 47, 1);
+  --md-default-bg-color--light:       rgba(6, 31, 47, 0.7);
+  --md-default-bg-color--lighter:     rgba(6, 31, 47, 0.3);
+  --md-default-bg-color--lightest:    rgba(31, 52, 66, 1);
+
+  --md-code-bg-color:                 rgba(10, 18, 27, 1);
+  --md-code-fg-color:                 var(--md-accent-fg-color);
+
+  --md-text-color:                    var(--md-default-fg-color--light);
+  --md-text-link-color:               var(--md-primary-fg-color);
+
+  --md-admonition-bg-color:           var(--md-default-bg-color);
+  --md-admonition-fg-color:           var(--md-default-fg-color);
+
+  --md-table-fg-color:                rgba(203, 219, 230, 1);
+  --md-table-bg-color:                rgba(43, 66, 82, 1);
+
+  --md-sidebar-bg-color:              rgba(16, 30, 38, 1);
+
+  --md-typeset-a-color:               var(--md-accent-fg-color);
+  --md-typeset-a-color--action:       var(--md-primary-fg-color);
+
+  --md-footer-bg-color:               rgba(0, 0, 0, 1);
+  --md-footer-bg-color--dark:         var(--md-default-bg-color);
+  --md-footer-fg-color:               var(--md-default-fg-color);
+  --md-footer-fg-color--light:        var(--md-accent-fg-color);
+  --md-footer-fg-color--lighter:      rgba(211, 212, 212, 1);
+}

@@ -1,0 +1,165 @@
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+
+  <style>
+    [data-md-color-scheme="default"] {
+      --md-wave-image: url('/assets/images/wave-default.svg');
+    }
+
+    [data-md-color-scheme="slate"] {
+      --md-wave-image: url('/assets/images/wave-slate.svg');
+    }
+
+    .md-content{
+      display:none
+    }
+
+    .md-header-nav__title {
+      opacity: 0;
+    }
+
+    .md-load {
+      background: var(--md-load-image) 50% 50% no-repeat var(--md-default-bg-color);
+      bottom: 0;
+      height: 100%;
+      left: 0;
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+
+    .tx-container {
+      background: var(--md-wave-image) no-repeat bottom, linear-gradient(var(--md-primary-fg-color), var(--md-accent-fg-color));
+    }
+
+    .tx-hero {
+      color: var(--md-primary-bg-color);
+      margin: 3rem;
+    }
+
+    .tx-hero h1 {
+      color: currentColor;
+      margin-bottom: 1rem;
+    }
+
+    .tx-hero .md-button {
+      margin-top: .5rem;
+      margin-right: .5rem;
+      color: var(--md-primary-bg-color);
+    }
+
+    .tx-hero .md-button:focus, .tx-hero .md-button:hover {
+      background-color: var(--md-accent-fg-color);
+      border-color: var(--md-accent-fg-color);
+      color: var(--md-default-bg-color);
+    }
+
+    .tx-hero .md-button--primary {
+      background-color: var(--md-primary-bg-color);
+      border-color: var(--md-primary-bg-color);
+      color: var(--md-primary-fg-color);
+    }
+
+    .tx-hero__content {
+      padding-bottom: 9rem;
+    }
+
+    .tx-hero__image {
+      margin: 1rem;
+    }
+
+    @media screen and (min-width: 60em) {
+      .md-sidebar--secondary {
+        display: none;
+      }
+
+      .tx-hero {
+        align-items: stretch;
+        display: flex;
+        justify-content: center;
+      }
+
+      .tx-hero__content {
+        margin-top: 5rem;
+        max-width: 20rem;
+      }
+
+      .tx-hero__image {
+        order: 1;
+        transform: translateX(2rem);
+      }
+    }
+
+    @media screen and (min-width: 76.25em) {
+      .md-sidebar--primary {
+        display: none;
+      }
+
+      .tx-hero {
+        margin: inherit 9rem;
+      }
+
+      .tx-hero__image {
+        order: 1;
+        transform: translateX(4rem);
+      }
+    }
+  </style>
+
+  <section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+        <div class="tx-hero__image">
+          <img
+            draggable="false"
+            width="720"
+            src="/assets/images/inaccel-cloud.svg"
+          >
+        </div>
+        <div class="tx-hero__content">
+          <h1>FPGA Operations:<br><span id="typed"></span> it.</h1>
+          <p>{{ config.site_description }}. Set up in 5 minutes.</p>
+          <a
+            class="md-button md-button--primary"
+            href="{{ page.next_page.url | url }}"
+            title="{{ page.next_page.title | striptags }}"
+          >
+            Get started
+          </a>
+          <a
+            class="md-button"
+            href="{{ config.repo_url }}"
+            target="_blank"
+            title="{{ lang.t('source.link.title') }}"
+          >
+            Go to GitHub
+          </a>
+          </script>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function fpga_operations() {
+      var typed = new Typed('#typed', {
+        backDelay: 1000,
+        backSpeed: 50,
+        loop: true,
+        startDelay: 100,
+        strings: ['Debug', 'Integrate', 'Deploy', 'Monitor', 'Scale', 'Maintain'],
+        typeSpeed: 100
+      });
+    }
+
+    if (window['Typed']) {
+      fpga_operations();
+    } else {
+      window.addEventListener('load', fpga_operations);
+    }
+  </script>
+{% endblock %}

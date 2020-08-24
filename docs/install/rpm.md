@@ -1,0 +1,136 @@
+---
+title: RPM-based Installation
+---
+
+# RPM-based Installation
+
+*<small id="time">Estimated reading time: X</small>*
+
+This document elaborates on the installation process of InAccel ecosystem for
+RPM-based distributions (Amazon Linux / CentOS / Fedora / Red Hat Enterprise
+Linux).
+
+## Install InAccel
+
+You can install InAccel in different ways, depending on your needs:
+
+* Most users [set up InAccel’s repositories](#install-using-the-repository) and
+	install from them, for ease of installation and upgrade tasks. This is the
+	recommended approach.
+
+* Some users download the RPM package and
+	[install it manually](#install-from-a-package) and manage upgrades
+	completely manually. This is useful in situations such as installing InAccel
+	on air-gapped systems with no access to the internet.
+
+### Install using the repository
+
+Before you install InAccel for the first time on a new host machine, you need to
+set up the InAccel repository. Afterward, you can install and update InAccel
+from the repository.
+
+> **SETUP THE REPOSITORY**
+
+!!! note
+
+	In testing and development environments, some users choose to use the
+	automated [convenience script](/setup/repo) to setup
+	[InAccel repository](https://setup.inaccel.com).
+
+**Step 1**
+&nbsp;&nbsp;&nbsp;Install required packages. `yum-utils` provides the
+`yum-config-manager` utility:
+
+```bash
+sudo yum install -y yum-utils
+```
+
+**Step 2**
+&nbsp;&nbsp;&nbsp;Add InAccel's repository to your YUM repositories:
+
+```bash
+sudo yum-config-manager \
+	--add-repo \
+	https://jfrog.inaccel.com/artifactory/generic/packages/inaccel.repo
+```
+
+> **INSTALL INACCEL**
+
+**Step 1**
+&nbsp;&nbsp;&nbsp;Install the *latest version* of InAccel:
+
+```bash
+sudo yum install -y inaccel
+```
+
+**Step 2**
+&nbsp;&nbsp;&nbsp;InAccel offers a modified/extended version of
+[`runc`](https://github.com/opencontainers/runc) by adding custom pre-start and
+post-stop hooks to Coral containers. By providing our custom runtime we enable
+implicit loading of drivers and libraries of FPGA vendors to provide a
+zero-configuration experience. To make docker aware of those changes you need to
+restart its daemon:
+
+```bash
+sudo systemctl restart docker
+```
+
+**Step 3**
+&nbsp;&nbsp;&nbsp;Verify that InAccel is installed correctly.
+
+```bash
+inaccel --version
+```
+
+### Install from a package
+
+If you cannot use InAccel's repository to install InAccel, you can download the
+`.rpm` file for your release and install it manually. You need to download a new
+file each time you want to upgrade InAccel.
+
+**Step 1**
+&nbsp;&nbsp;&nbsp;Go to
+[https://jfrog.inaccel.com/artifactory/generic/packages/rpm](https://jfrog.inaccel.com/artifactory/generic/packages/rpm)
+and download the `.rpm` file for the InAccel version you want to install.
+
+**Step 2**
+&nbsp;&nbsp;&nbsp;Install InAccel, changing the path below to the path where you
+downloaded the InAccel package.
+
+```bash
+sudo yum install /path/to/package.rpm
+```
+
+**Step 3**
+&nbsp;&nbsp;&nbsp;Restart docker service to enable InAccel's custom `runc` hooks
+(as mentioned above):
+
+```bash
+sudo systemctl restart docker
+```
+
+**Step 4**
+&nbsp;&nbsp;&nbsp;Verify that InAccel is installed correctly.
+
+```bash
+inaccel --version
+```
+
+## Uninstall InAccel
+
+**Step 1**
+&nbsp;&nbsp;&nbsp;Uninstall the InAccel package:
+
+```bash
+sudo yum remove inaccel
+```
+
+**Step 2**
+&nbsp;&nbsp;&nbsp;Bitstreams, or customized configuration files on your host are
+not automatically removed. To delete all bitstreams:
+
+```bash
+sudo rm -rf /var/lib/inaccel
+```
+
+You must delete any edited configuration files manually.

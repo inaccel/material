@@ -1,0 +1,170 @@
+edit_uri: ''
+extra:
+  social:
+  - icon: fontawesome/brands/bitbucket
+    link: https://bitbucket.org/inaccel
+  - icon: fontawesome/brands/docker
+    link: https://hub.docker.com/u/inaccel
+  - icon: fontawesome/brands/github
+    link: https://github.com/inaccel
+  - icon: fontawesome/brands/linkedin
+    link: https://linkedin.com/in/inaccel
+  - icon: fontawesome/brands/medium
+    link: https://medium.com/@inaccel
+  - icon: fontawesome/brands/twitter
+    link: https://twitter.com/inaccel
+  - icon: fontawesome/brands/youtube
+    link: https://youtube.com/channel/UCzUcYE3p19_7UA33z3Bb9Mw
+extra_css:
+- assets/stylesheets/extra.css
+- assets/stylesheets/load.css
+- assets/stylesheets/paint.css
+- assets/stylesheets/palette.css
+- assets/stylesheets/youtube.css
+extra_javascript:
+- https://cdn.jsdelivr.net/npm/typed.js@2.0.11
+- https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
+- https://code.jquery.com/jquery-2.2.4.js
+- assets/javascripts/load.js
+- assets/javascripts/paint.js
+- assets/javascripts/tabbed.js
+- assets/javascripts/time.js
+- assets/javascripts/youtube.js
+google_analytics:
+- UA-159948615-1
+- auto
+markdown_extensions:
+- admonition
+- attr_list
+- codehilite
+- footnotes
+- meta
+- pymdownx.arithmatex
+- pymdownx.betterem:
+    smart_enable: all
+- pymdownx.caret
+- pymdownx.critic
+- pymdownx.details
+- pymdownx.emoji:
+    emoji_index: !!python/name:materialx.emoji.twemoji
+    emoji_generator: !!python/name:materialx.emoji.to_svg
+- pymdownx.inlinehilite
+- pymdownx.magiclink
+- pymdownx.mark
+- pymdownx.smartsymbols
+- pymdownx.superfences
+- pymdownx.tabbed
+- pymdownx.tasklist:
+    custom_checkbox: true
+- pymdownx.tilde
+- toc:
+    permalink: '-'
+nav:
+- 'Home': index.md
+- 'Guides':
+  - 'Get InAccel':
+    - 'Overview': overview.md
+    - 'Install':
+      - 'Linux platforms': install/linux.md
+      - 'Debian': install/debian.md
+      - 'RPM': install/rpm.md
+    - 'Setup':
+      - 'InAccel repository': setup/repo.md
+      - 'Dockerfile': setup/docker.md
+      - 'Kubernetes': setup/kubernetes.md
+    - 'Release Notes': release-notes.md
+  - 'Getting Started':
+    - 'Part 1: Orientation': tutorial/orientation.md
+    - 'Part 2: Setup the working environment': tutorial/setup.md
+    - 'Part 3: Deploy your bitstreams': tutorial/bitstreams.md
+    - 'Part 4: Accelerate your app': tutorial/app.md
+  - 'Develop with InAccel':
+    - 'Examples': develop/examples.md
+    - 'Projects':
+      - 'Apache Spark':
+        - 'Run locally': develop/projects/spark/locally.md
+        - 'Run in a cluster': develop/projects/spark/in-a-cluster.md
+        - 'Machine Learning Examples': develop/projects/spark/ml-examples.md
+      - 'Jupyter Notebook': develop/projects/jupyter/notebook-server.md
+      - Keras: project/keras.md
+      - 'scikit-learn': project/scikit-learn.md
+      - 'XGBoost': project/xgboost.md
+  - 'Application Programming Interfaces (APIs)':
+    - 'C': https://setup.inaccel.com/coral-api/c
+    - 'C++': https://setup.inaccel.com/coral-api/cpp
+    - 'Java': https://setup.inaccel.com/coral-api/java
+    - 'Python': https://setup.inaccel.com/coral-api/python
+- 'Reference':
+  - 'InAccel CLI (inaccel)':
+    - 'Use the InAccel command line': reference/inaccel/overview.md
+    - 'inaccel (base command)': reference/inaccel/command.md
+    - 'inaccel bitstream *':
+      - 'inaccel bitstream': reference/inaccel/bitstream/command.md
+      - 'inaccel bitstream parse': reference/inaccel/bitstream/parse.md
+      - 'inaccel bitstream install': reference/inaccel/bitstream/install.md
+      - 'inaccel bitstream list': reference/inaccel/bitstream/list.md
+      - 'inaccel bitstream remove': reference/inaccel/bitstream/remove.md
+    - 'inaccel config *':
+      - 'inaccel config': reference/inaccel/config/command.md
+      - 'inaccel config license': reference/inaccel/config/license.md
+      - 'inaccel config repository': reference/inaccel/config/repository.md
+    - 'inaccel coral *':
+      - 'inaccel coral': reference/inaccel/coral/command.md
+      - 'inaccel coral console': reference/inaccel/coral/console.md
+      - 'inaccel coral logs': reference/inaccel/coral/logs.md
+      - 'inaccel coral start': reference/inaccel/coral/start.md
+      - 'inaccel coral stop': reference/inaccel/coral/stop.md
+    - 'inaccel docker *':
+      - 'inaccel docker': reference/inaccel/docker/command.md
+      - 'inaccel docker prune': reference/inaccel/docker/prune.md
+      - 'inaccel docker status': reference/inaccel/docker/status.md
+    - 'inaccel monitor *':
+      - 'inaccel monitor': reference/inaccel/monitor/command.md
+      - 'inaccel monitor start': reference/inaccel/monitor/start.md
+      - 'inaccel monitor stop': reference/inaccel/monitor/stop.md
+  - 'File formats':
+    - 'Bitstream file reference': reference/file-formats/bitstream.md
+  - 'Glossary':
+    - 'accelerator': glossary/accelerator.md
+    - 'bitstream': glossary/bitstream.md
+    - 'container': glossary/container.md
+    - 'container runtime': glossary/container-runtime.md
+    - 'Coral': glossary/coral.md
+    - 'device plugin': glossary/device-plugin.md
+    - 'FPGA': glossary/fpga.md
+    - 'InAccel': glossary/inaccel.md
+    - 'InAccel Store': glossary/inaccel-store.md
+    - 'repository': glossary/repository.md
+- 'Samples':
+  - 'Tutorial labs':
+    - 'Rolling your own Bitstream Repository': labs/bitstream-repository.md
+    - 'Zero to FPGAs using BinderHub': labs/binderhub-aws.md
+    - 'Accelerate ML workflows on Kubeflow': labs/kubeflow.md
+    - 'Build H2O models with the FPGA backend': labs/h2o.md
+    - 'Using OpenShift for accelerated Data Analytics': labs/openshift-aws.md
+    - 'Hybrid auto-scalable FPGA deployment': 'labs/auto-scaling-aws.md'
+plugins:
+- awesome-pages
+- git-revision-date-localized
+- minify:
+    minify_html: true
+- search
+repo_url: https://github.com/inaccel
+site_author: InAccel
+site_description: InAccel is a product for you to build, ship and run FPGA accelerated applications
+site_name: InAccel Documentation
+site_url: https://docs.inaccel.com
+theme:
+  custom_dir: theme
+  features:
+  - instant
+  - tabs
+  font:
+    code: Roboto Mono
+    text: Open Sans
+  logo: assets/images/inaccel-docs-logo.svg
+  name: material
+  palette:
+    accent: inaccel
+    primary: inaccel
+    scheme: default

@@ -1,0 +1,19 @@
+[data-md-color-scheme="default"] {
+  --md-load-image: url('/assets/images/load-default.gif');
+}
+
+[data-md-color-scheme="slate"] {
+  --md-load-image: url('/assets/images/load-slate.gif');
+}
+
+.md-load {
+  background: var(--md-load-image) 50% 50% no-repeat var(--md-default-bg-color);
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}

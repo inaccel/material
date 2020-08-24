@@ -1,0 +1,26 @@
+name: gh-pages
+on:
+  push:
+    branches:
+    - master
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    container:
+      image: squidfunk/mkdocs-material:5.5.7
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Build
+      shell: sh
+      run: mkdocs build
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        cname: docs.inaccel.com
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: site
+        force_orphan: true
+        full_commit_message: ${{ github.event.head_commit.id }}
