@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The following steps can be performed on any machine with a Linux distribution
 (inside or outside Amazon EC2).

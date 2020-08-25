@@ -4,7 +4,7 @@ title: Machine Learning in Python
 
 # Machine Learning in Python
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 [![scikit-learn](/img/scikit-learn.png){: .center}](https://scikit-learn.org)
 

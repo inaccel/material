@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The **bitstream kernels** are the core component of every FPGA accelerated
 application. In order to allow automation pipelines, InAccel introduces the

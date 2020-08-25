@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 InAccel is an open platform for developing, shipping, and running accelerated
 applications. InAccel enables you to separate your applications from your

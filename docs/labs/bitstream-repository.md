@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 In this lab we will demonstrate how you can easily setup your own private
 [**Bitstream Repository**](https://inaccel.com/bitstream-repository) based on

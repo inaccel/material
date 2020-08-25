@@ -4,7 +4,7 @@ title: in a Docker image
 
 # in a Docker image
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 #### **FROM** debian / ubuntu
 

@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 In this lab we will go through the setup of a hybrid Kubernetes (K8s) cluster
 with FPGA support. By the term *hybrid*, we indicate that there is going to be a

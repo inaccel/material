@@ -4,7 +4,7 @@ title: Scalable, Portable and Distributed Gradient Boosting
 
 # Scalable, Portable and Distributed Gradient Boosting
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 [![keras](/img/xgboost.png){: .center}](https://xgboost.ai)
 

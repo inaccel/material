@@ -4,7 +4,7 @@ title: Kubernetes on FPGAs
 
 # Kubernetes on FPGAs
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 ## Scale-out FPGA-Accelerated Applications
 

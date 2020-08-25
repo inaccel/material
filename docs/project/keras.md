@@ -4,7 +4,7 @@ title: Deep Learning for humans
 
 # Deep Learning for humans
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 [![keras](/img/keras.png){: .center}](https://keras.io)
 

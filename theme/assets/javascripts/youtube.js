@@ -1,10 +1,12 @@
 function youtube() {
+  function transform(src) {
+    return 'https://youtube.com/embed/' + src
+  }
+
   $('img[alt="youtube/embed"]').each(function() {
-    const src = $(this).attr('src');
+    const html = '<div style="padding-bottom: 50%; position: relative;"><iframe style="height: 100%; position: absolute; width: 100%;" src="' + transform($(this).attr('src')) + '" frameborder="0" allowfullscreen></iframe></div>';
 
-    const video = '<div class="md-youtube"><iframe class="md-youtube__video" src="https://youtube.com/embed/' + src + '" frameborder="0" allowfullscreen></iframe></div>';
-
-    $(this).replaceWith(video);
+    $(this).replaceWith(html);
   });
 }
 

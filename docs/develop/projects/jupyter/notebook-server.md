@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The following instructions show how to launch a **Jupyter Notebook Server**
 image preconfigured with **InAccel** acceleration layer.

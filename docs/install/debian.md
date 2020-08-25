@@ -4,7 +4,7 @@ title: Debian-based Installation
 
 # Debian-based Installation
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 This document elaborates on the installation process of InAccel ecosystem for
 Debian-based distributions (Debian / Ubuntu).

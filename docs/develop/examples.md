@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The following application examples demonstrate how to use Coral FPGA Resource
 Manager, to automatically scale your accelerated solutions using in-house or

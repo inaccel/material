@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 This part of the tutorial refers primarily to bitstream developers who are
 willing to distribute their FPGA accelerators. By deploying their bitstreams

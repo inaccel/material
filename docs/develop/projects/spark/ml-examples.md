@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The following application examples demonstrate how to accelerate your Spark ML
 pipelines, seamlessly.

@@ -21,7 +21,6 @@ extra_css:
 - assets/stylesheets/load.css
 - assets/stylesheets/paint.css
 - assets/stylesheets/palette.css
-- assets/stylesheets/youtube.css
 extra_javascript:
 - https://cdn.jsdelivr.net/npm/typed.js@2.0.11
 - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML

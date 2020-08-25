@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 In this section, we thoroughly explain how to setup your working environment in
 order to run applications powered by InAccel Coral FPGA resource manager.

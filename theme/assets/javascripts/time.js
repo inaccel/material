@@ -1,8 +1,6 @@
 function time() {
-  var element = document.getElementById('time');
-
-  if (!Object.is(element, null)) {
-    const content = document.getElementsByClassName('md-content')[0].textContent;
+  function transform(src) {
+    const content = document.querySelector('.md-content').textContent;
 
     const words = content.match(/\w+/g).length;
 
@@ -10,15 +8,19 @@ function time() {
 
     switch (X) {
     case 0:
-      element.textContent = 'Estimated reading time: less than a minute';
-      break;
+      return src.replace('{X}', 'less than a minute');
     case 1:
-      element.textContent = 'Estimated reading time: 1 minute';
-      break;
+      return src.replace('{X}', '1 minute');
     default:
-      element.textContent = ['Estimated reading time:', X, 'minutes'].join(' ');
+      return src.replace('{X}', [X, 'minutes'].join(' '));
     }
   }
+
+  $('img[alt="time/embed"]').each(function() {
+    const html = '<small>' + transform($(this).attr('src')) + '</small>';
+
+    $(this).replaceWith(html);
+  });
 }
 
 document.addEventListener('DOMContentLoaded', time);

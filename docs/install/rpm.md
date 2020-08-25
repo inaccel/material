@@ -4,7 +4,7 @@ title: RPM-based Installation
 
 # RPM-based Installation
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 This document elaborates on the installation process of InAccel ecosystem for
 RPM-based distributions (Amazon Linux / CentOS / Fedora / Red Hat Enterprise

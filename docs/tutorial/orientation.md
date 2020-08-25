@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 Through this tutorial, we will guide you step-by-step on how to leverage InAccel
 toolset to ship and run your accelerator workloads in a simple, straightforward

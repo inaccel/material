@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 The purpose of this tutorial is to demonstrate the easiness of accelerating a
 Machine Learning application using FPGAs on

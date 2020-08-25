@@ -4,7 +4,7 @@ title: Quick & easy setup
 
 # Quick & easy setup
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 In testing and development environments, some users choose to use the automated
 [convenience script](#setup-using-the-convenience-script) to setup InAccel

@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 In this tutorial we will demonstrate how to develop a complete machine learning
 application using FPGAs on Kubeflow.

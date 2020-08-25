@@ -4,7 +4,7 @@ title: Install InAccel
 
 # Install InAccel
 
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 ## Supported platforms
 

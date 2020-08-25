@@ -1,4 +1,4 @@
-*<small id="time">Estimated reading time: X</small>*
+*![time/embed](Estimated reading time: {X})*
 
 ## Description
 
@@ -14,8 +14,6 @@ inaccel bitstream command [command options] [arguments...]
 
 | Command                                     | Description                                                                                                 |
 | :------------------------------------------ | :---------------------------------------------------------------------------------------------------------- |
-| [` inaccel bitstream decrypt `](decrypt.md) | Decrypt an FPGA binary                                                                                      |
-| [` inaccel bitstream encrypt `](encrypt.md) | Encrypt an FPGA binary                                                                                      |
 | [` inaccel bitstream parse `](parse.md)     | Parse FPGA binary build-metadata                                                                            |
 | [` inaccel bitstream install `](install.md) | Install a bitstream to the local or a remote repository, from a local or a remote source                    |
 | [` inaccel bitstream list `](list.md)       | List all the bitstreams or detailed information for specific bitstreams in the local or a remote repository |
