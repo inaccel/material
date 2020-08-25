@@ -131,10 +131,17 @@ small {
   padding-left: 0;
 }
 
-.md-typeset h1, h2, h3, h4, h5, h6 {
+.md-typeset code {
+  padding: 1px 8px;
+}
+
+.md-typeset h1 {
   margin: 0.8rem 0 -1.2rem 0;
+}
+
+.md-typeset h1, h2, h3, h4, h5, h6 {
   font-family: 'Geomanist Book';
-  font-weight: 500;
+  font-weight: 500 !important;
 }
 
 .md-typeset table:not([class]) {

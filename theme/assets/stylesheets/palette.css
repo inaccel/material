@@ -32,7 +32,7 @@
   --md-default-bg-color--lightest:    rgba(224, 228, 231, 1);
 
   --md-code-bg-color:                 rgba(245, 248, 250, 1);
-  --md-code-fg-color:                 var(--md-primary-fg-color);
+  --md-code-fg-color:                 rgba(12, 81, 118, 0.8);
 
   --md-text-color:                    var(--md-default-fg-color--light);
   --md-text-link-color:               var(--md-primary-fg-color);
@@ -67,7 +67,7 @@
   --md-default-bg-color--lightest:    rgba(31, 52, 66, 1);
 
   --md-code-bg-color:                 rgba(10, 18, 27, 1);
-  --md-code-fg-color:                 var(--md-accent-fg-color);
+  --md-code-fg-color:                 rgba(193, 241, 240, 0.8);
 
   --md-text-color:                    var(--md-default-fg-color--light);
   --md-text-link-color:               var(--md-primary-fg-color);
