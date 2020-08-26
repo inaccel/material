@@ -12,6 +12,15 @@
       --md-wave-image: url('/assets/images/wave-slate.svg');
     }
 
+    body::after{
+      content: url('/assets/images/wave-default.svg') url('/assets/images/wave-slate.svg');
+      height: 0;
+      position: absolute;
+      overflow: hidden;
+      width: 0;
+      z-index: -1;
+    }
+
     .md-content{
       display:none
     }
