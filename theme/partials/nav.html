@@ -39,6 +39,13 @@
     </a>
   </label>
 
+  <!-- Repository containing source -->
+  {% if config.repo_url %}
+    <div class="md-nav__source">
+      {% include "partials/source.html" %}
+    </div>
+  {% endif %}
+
   <!-- Render item list -->
   <ul class="md-nav__list" data-md-scrollfix>
     {% for nav_item in nav %}

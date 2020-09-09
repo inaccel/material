@@ -1,3 +1,7 @@
+*:hover {
+	scrollbar-color: var(--md-text-link-color) transparent !important;
+}
+
 html .md-footer-meta.md-typeset a:focus, html .md-footer-meta.md-typeset a:hover {
   color: var(--md-default-fg-color);
 }
@@ -67,12 +71,12 @@ small {
 }
 
 .md-nav__item .md-nav__item--nested .md-nav__list {
-  border-left: 1px solid var(--md-primary-fg-color--light);
+  border-left: 1px solid var(--md-default-fg-color--dark);
 }
 
 .md-nav__item--highlight {
-  background-color: var(--md-primary-fg-color--dark);
-  border-left: 3px solid var(--md-primary-fg-color--light);
+  background-color: var(--md-default-bg-color--dark);
+  border-left: 3px solid var(--md-default-fg-color--dark);
 }
 
 .md-nav__link {
@@ -158,14 +162,18 @@ small {
   background-color: var(--md-admonition-bg-color);
 }
 
+.md-typeset .admonition-title, .md-typeset summary {
+  background-color: var(--md-admonition-bg-color);
+}
+
 .md-typeset .tabbed-set > input:checked + label  {
-  background-color: var(--md-primary-fg-color--dark);
-  border-bottom: 4px solid var(--md-primary-fg-color--light);
+  background-color: var(--md-default-bg-color--dark);
+  border-bottom: 4px solid var(--md-default-fg-color--dark);
   color: var(--md-typeset-a-color);
 }
 
 .md-typeset .tabbed-set > label {
-  border-bottom: 1px solid var(--md-primary-fg-color--light);
+  border-bottom: 1px solid var(--md-default-fg-color--dark);
   font-size: 0.7rem;
   font-weight: normal;
   line-height: 1.3;
