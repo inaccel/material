@@ -1,29 +1,12 @@
 #paint:checked + .md-paint svg {
-  transform: rotate(180deg);
+  transform: rotate(0deg);
 }
 
 input.md-paint {
   display: none
 }
 
-.md-paint {
-  background-color: var(--md-primary-fg-color);
-  border-radius: 100%;
-  bottom: 6rem;
-  box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.1), 0 0.2rem 0.4rem rgba(0, 0, 0, 0.2);
-  color: var(--md-primary-bg-color);
-  padding: 0.45rem;
-  position: fixed;
-  right: 5rem;
-  z-index: 999;
-}
-
 .md-paint svg {
   transition-duration: 250ms;
-}
-
-@media screen and (max-width: 60em) {
-  .md-paint {
-    display: none;
-  }
+  transform: rotate(180deg);
 }

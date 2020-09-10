@@ -91,6 +91,10 @@ small {
   color: var(--md-typeset-a-color);
 }
 
+.md-nav__source {
+  background-color: var(--md-primary-fg-color);
+}
+
 .md-nav__title {
   padding-top: 0.48rem;
   padding-bottom: 0.32rem;

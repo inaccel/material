@@ -22,11 +22,6 @@
 
 <div id="load" class="md-load"></div>
 
-<input id="paint" class="md-paint" type="checkbox"/>
-<label for="paint" class="md-paint md-icon">
-  {% include ".icons/material/theme-light-dark.svg" %}
-</label>
-
 <!-- Application header -->
 <header class="md-header" data-md-component="header">
 
@@ -61,6 +56,11 @@
         </span>
       </div>
     </div>
+
+    <input id="paint" class="md-paint" type="checkbox"/>
+    <label for="paint" class="md-header-nav__button md-icon md-paint">
+      {% include ".icons/material/theme-light-dark.svg" %}
+    </label>
 
     <!-- Button to open search dialogue -->
     {% if "search" in config["plugins"] %}
