@@ -4,6 +4,10 @@
   }
 }
 
+#PapercupsChatWidget {
+  z-index: 0 !important;
+}
+
 .Papercups-chatWindowContainer {
   bottom: 135px !important;
   height: calc(100% - 270px) !important;
