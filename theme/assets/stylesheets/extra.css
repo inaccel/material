@@ -1,3 +1,13 @@
+@media screen and (min-width: 76.25em) {
+  [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
+    width: 31.6rem;
+  }
+
+  .md-search__scrollwrap {
+    width: 31.6rem;
+  }
+}
+
 *:hover {
 	scrollbar-color: var(--md-text-link-color) transparent !important;
 }
@@ -72,6 +82,10 @@ small {
 
 .md-nav__item .md-nav__item--nested .md-nav__list {
   border-left: 1px solid var(--md-default-fg-color--dark);
+}
+
+.md-nav__item .md-nav__link--active {
+  margin-left: -3px;
 }
 
 .md-nav__item--highlight {
