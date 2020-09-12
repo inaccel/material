@@ -8,6 +8,10 @@
   }
 }
 
+[data-md-toggle="search"]:checked ~ .md-header .md-header-nav__extra {
+  display: none;
+}
+
 *:hover {
 	scrollbar-color: var(--md-text-link-color) transparent !important;
 }

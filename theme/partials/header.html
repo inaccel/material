@@ -57,10 +57,12 @@
       </div>
     </div>
 
-    <input id="paint" class="md-paint" type="checkbox"/>
-    <label for="paint" class="md-header-nav__button md-icon md-paint">
-      {% include ".icons/material/theme-light-dark.svg" %}
-    </label>
+    <div class="md-header-nav__extra">
+      <input id="paint" class="md-paint" type="checkbox"/>
+      <label for="paint" class="md-header-nav__button md-icon md-paint">
+        {% include ".icons/material/theme-light-dark.svg" %}
+      </label>
+    </div>
 
     <!-- Button to open search dialogue -->
     {% if "search" in config["plugins"] %}
