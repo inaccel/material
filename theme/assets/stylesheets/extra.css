@@ -1,10 +1,10 @@
 @media screen and (min-width: 76.25em) {
   [data-md-toggle="search"]:checked ~ .md-header .md-search__inner {
-    width: 31.6rem;
+    width: 32.4rem;
   }
 
   .md-search__scrollwrap {
-    width: 31.6rem;
+    width: 32.4rem;
   }
 }
 
@@ -63,7 +63,7 @@ small {
 }
 
 .md-header-nav__button.md-logo {
-  width: 10.5rem;
+  width: 11.3rem;
 }
 
 .md-header-nav__button.md-logo img, .md-header-nav__button.md-logo svg {
@@ -71,8 +71,16 @@ small {
   width: 6rem;
 }
 
+.md-header-nav__title {
+  margin-left: 0.4rem;
+}
+
 .md-main__inner {
   margin-top: 0;
+}
+
+.md-nav--primary .md-nav__item .md-nav__link--active {
+  margin-left: -3px;
 }
 
 .md-nav__item {
@@ -86,10 +94,6 @@ small {
 
 .md-nav__item .md-nav__item--nested .md-nav__list {
   border-left: 1px solid var(--md-default-fg-color--dark);
-}
-
-.md-nav__item .md-nav__link--active {
-  margin-left: -3px;
 }
 
 .md-nav__item--highlight {
