@@ -21,10 +21,6 @@
       z-index: -1;
     }
 
-    .md-content{
-      display:none
-    }
-
     .md-header-nav__title {
       opacity: 0;
     }
@@ -172,4 +168,93 @@
       window.addEventListener('load', fpga_operations);
     }
   </script>
+{% endblock %}
+
+{% block content %}
+  <style>
+    .col-xs-3 {
+      background-color: var(--md-sidebar-bg-color);
+      border: 1px solid var(--md-default-bg-color--lightest);
+      box-shadow: 1px 1px 2px 0 var(--md-default-fg-color--lightest);
+      margin: 1rem;
+    }
+
+    .col-xs-3:focus, .col-xs-3:hover {
+      transform: scale(1.01);
+    }
+
+    .col-xs-3 h2 {
+      margin: 1rem 1rem 0.1rem 1rem;
+    }
+
+    .col-xs-3 p {
+      margin: 0.1rem 1rem 1rem 1rem;
+    }
+
+    .col-xs-3 svg {
+      margin-top: 1.5rem;
+      max-height: 64px;
+      max-width: 128px;
+    }
+
+    .col-xs-3 svg path {
+      fill: var(--md-typeset-a-color);
+    }
+
+    .md-content {
+      max-width: 100%;
+    }
+
+    .md-typeset a {
+      color: var(--md-default-fg-color);
+      transition: none;
+    }
+
+    .md-typeset a:focus, .md-typeset a:hover {
+      color: var(--md-default-fg-color--light);
+    }
+
+    @media screen and (max-width: 76.25em) {
+      .col-xs-3 {
+        -ms-flex-preferred-size: 100%;
+        flex-basis: 100%;
+        max-width: 100%;
+      }
+    }
+  </style>
+
+  <div class="row around-xs">
+    <a class="col-xs-3" href="/tutorial/orientation/">
+      {% include "assets/images/card1.svg" %}
+      <h2 class="title">Get started</h2>
+      <p>Learn InAccel basics and the benefits of abstracting your FPGA applications.</p>
+    </a>
+    <a class="col-xs-3" href="/install/linux/">
+      {% include "assets/images/card2.svg" %}
+      <h2 class="title">Download and install</h2>
+      <p>Download and install InAccel on your machines in a few easy steps.</p>
+    </a>
+    <a class="col-xs-3" href="/develop/examples/">
+      {% include "assets/images/card3.svg" %}
+      <h2 class="title">Guides</h2>
+      <p>Learn how to setup your InAccel environment and start abstracting your FPGA applications.</p>
+    </a>
+  </div>
+  <div class="row around-xs">
+    <a class="col-xs-3" href="/release-notes/">
+      {% include "assets/images/card4.svg" %}
+      <h2 class="title">What's new?</h2>
+      <p>Learn about the cool new features, updates, and bug fixes.</p>
+    </a>
+    <a class="col-xs-3" href="/labs/bitstream-repository/">
+      {% include "assets/images/card5.svg" %}
+      <h2 class="title">Tutorial labs</h2>
+      <p>Browse through the tutorials and learn how to use InAccel products.</p>
+    </a>
+    <a class="col-xs-3" href="/reference/inaccel/overview/">
+      {% include "assets/images/card6.svg" %}
+      <h2 class="title">Reference</h2>
+      <p>Browse through the CLI and API reference documentation.</p>
+    </a>
+  </div>
 {% endblock %}

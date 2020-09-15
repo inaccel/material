@@ -16,6 +16,7 @@ extra:
   - icon: fontawesome/brands/youtube
     link: https://youtube.com/channel/UCzUcYE3p19_7UA33z3Bb9Mw
 extra_css:
+- https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css
 - assets/fonts/stylesheet.css
 - assets/stylesheets/extra.css
 - assets/stylesheets/load.css
