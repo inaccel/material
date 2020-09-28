@@ -159,8 +159,8 @@ site_url: https://docs.inaccel.com
 theme:
   custom_dir: theme
   features:
-  - instant
-  - tabs
+  - navigation.instant
+  - navigation.tabs
   font:
     code: Roboto Mono
     text: Open Sans

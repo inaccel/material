@@ -7,12 +7,14 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     container:
-      image: squidfunk/mkdocs-material:5.5.12
+      image: squidfunk/mkdocs-material:6.0.1
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Install requirements
+      run: pip install -r requirements.txt
     - name: Build
       shell: sh
       run: mkdocs build
