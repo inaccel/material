@@ -22,7 +22,7 @@ You can add a Maven dependency with the following coordinates:
 </dependency>
 ```
 
-!!! hint "Full Java API documentation is available [here](/api/java)."
+!!! hint "Full Java API documentation is available [here](https://docs.inaccel.com/api/java)."
 
 ---
 

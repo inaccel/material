@@ -4,13 +4,13 @@ In this section, we will teach you how to create your own simple application to
 invoke the accelerators implemented in [Part 3](bitstreams.md).
 
 For the purpose of this tutorial, we will create an application using the
-[C++](/api/cpp/annotated.html) API, though you can also check the programming
-interfaces for [Java](/api/java), Scala and [Python](/api/python).
+[C++](https://docs.inaccel.com/api/cpp/annotated.html) API, though you can also check the programming
+interfaces for [Java](https://docs.inaccel.com/api/java), Scala and [Python](https://docs.inaccel.com/api/python).
 
 ## Prerequisites
 
 1. Coral API (`coral-api`) package should be installed in your system. Complete
-instructions on how to install it are provided [here](/api/cpp/annotated.html).
+instructions on how to install it are provided [here](https://docs.inaccel.com/api/cpp/annotated.html).
 
 ## Introduction
 
@@ -149,7 +149,7 @@ The `inaccel::submit` executes the accelerator request in an asynchronous manner
 (i.e doesn't block until completion). To ensure completion you have to use
 `inaccel::wait`.
 
-!!! hint "Full C++ API documentation is available [here](/api/cpp/annotated.html)."
+!!! hint "Full C++ API documentation is available [here](https://docs.inaccel.com/api/cpp/annotated.html)."
 
 ## Compilation
 

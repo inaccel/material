@@ -92,10 +92,9 @@ nav:
       - 'scikit-learn': project/scikit-learn.md
       - 'XGBoost': project/xgboost.md
   - 'Application Programming Interfaces (APIs)':
-    - 'C': https://setup.inaccel.com/coral-api/c
-    - 'C++': https://setup.inaccel.com/coral-api/cpp
-    - 'Java': https://setup.inaccel.com/coral-api/java
-    - 'Python': https://setup.inaccel.com/coral-api/python
+    - 'C++': https://docs.inaccel.com/api/cpp
+    - 'Java': https://docs.inaccel.com/api/java
+    - 'Python': https://docs.inaccel.com/api/python
 - 'Reference':
   - 'InAccel CLI (inaccel)':
     - 'Use the InAccel command line': reference/inaccel/overview.md

@@ -35,7 +35,7 @@ include the appropriate header and submit your accelerator request. Check our
 [Getting Started ](/tutorial/orientation) guide to leverage the power of
 acceleration.
 
-!!! hint "Full C++ API documentation is available [here](/api/cpp/annotated.html)."
+!!! hint "Full C++ API documentation is available [here](https://docs.inaccel.com/api/cpp/annotated.html)."
 
 ---
 
