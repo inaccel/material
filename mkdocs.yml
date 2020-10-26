@@ -90,6 +90,7 @@ nav:
       - 'Jupyter Notebook': develop/projects/jupyter/notebook-server.md
       - Keras: project/keras.md
       - 'scikit-learn': project/scikit-learn.md
+      - 'TF Quant Finance': project/tf-quant-finance.md
       - 'XGBoost': project/xgboost.md
   - 'Application Programming Interfaces (APIs)':
     - 'C++': https://docs.inaccel.com/api/cpp
