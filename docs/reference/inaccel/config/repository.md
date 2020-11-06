@@ -21,6 +21,6 @@ Where `<id>` is the id of the remote repository.
 
 ## Parent command
 
-| Command                          | Description                                                    |
-| :------------------------------- | :------------------------------------------------------------- |
-| [` inaccel config `](command.md) | Configures bitstream repositories and coral container settings |
+| Command                        | Description                                                    |
+| :----------------------------- | :------------------------------------------------------------- |
+| [` inaccel config `](index.md) | Configures bitstream repositories and coral container settings |

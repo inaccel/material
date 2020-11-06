@@ -18,7 +18,7 @@ The CLI is divided in **two** main categories:
 
 ## inaccel
 
-To list available commands, either run [`inaccel`](command.md) with no
+To list available commands, either run [`inaccel`](index.md) with no
 parameters or execute:
 
 ```text
@@ -30,22 +30,20 @@ USAGE:
    inaccel [global options] command [command options] [arguments...]
 
 VERSION:
-   1.8.7
+   1.8.14
 
 COMMANDS:
    config, c  Configures bitstream repositories and coral container settings
    help, h    Shows a list of commands or help for one command
 
    bitstream:
-     decrypt, dec  Decrypt an FPGA binary
-     encrypt, enc  Encrypt an FPGA binary
-     parse         Parse FPGA binary build-metadata
-     install       Install a bitstream to the local or a remote repository, from a local or a remote source
-     list          List all the bitstreams or detailed information for specific bitstreams in the local or a remote repository
-     remove        Remove one or more bitstreams from the local or a remote repository
+     parse    Parse FPGA binary build-metadata
+     install  Install a bitstream to the local or a remote repository, from a local or a remote source
+     list     List all the bitstreams or detailed information for specific bitstreams in the local or a remote repository
+     remove   Remove one or more bitstreams from the local or a remote repository
 
    coral:
-     console  Fetch the console of the InAccel Coral container
+     console  Get a console inside the InAccel Coral container
      logs     Fetch the logs of the InAccel Coral container
      start    Start the InAccel Coral container
      stop     Stop the InAccel Coral container
@@ -60,6 +58,7 @@ COMMANDS:
 
 GLOBAL OPTIONS:
    --debug, -d    enable debug output
+   --quiet, -q    run in quiet mode
    --help, -h     show help
    --version, -v  print the version
 ```
@@ -78,8 +77,8 @@ supports custom container runtimes (`--runtime` flag).
 #### Notice
 
 Depending on your Docker system configuration, you may be required to preface
-each [`inaccel coral`](coral/command.md) command with `sudo`. To avoid having to
-use `sudo` with the [`inaccel coral`](coral/command.md) command, your system
+each [`inaccel coral`](coral/index.md) command with `sudo`. To avoid having to
+use `sudo` with the [`inaccel coral`](coral/index.md) command, your system
 administrator can create a Unix group called `docker` and add users to it.
 
 For more information about installing Docker or `sudo` configuration, refer to
@@ -111,7 +110,7 @@ when running the [`inaccel coral start`](coral/start.md) command.
 
 You can modify the `settings.json` or `settings.xml` file to configure bitstream
 repositories and coral container settings or you can simply use the
-[`inaccel config`](config/command.md) command.
+[`inaccel config`](config/index.md) command.
 
 The settings file stores a JSON or an XML encoding of several properties:
 

@@ -12,18 +12,14 @@ inaccel logs [command options]
 
 ## Options
 
-| Name, shorthand  | Default | Description                                         |
-| :--------------- | :-----: | :-------------------------------------------------- |
-| ` --eq `         |         | Keep logs with level equal to value                 |
-| ` --ne `         |         | Keep logs with level not equal to value             |
-| ` --gt `         |         | Keep logs with level greater than value             |
-| ` --ge `         |         | Keep logs with level greater than or equal to value |
-| ` --lt `         |         | Keep logs with level less than value                |
-| ` --le `         |         | Keep logs with level less than or equal to value    |
-| ` --follow, -f ` |         | Follow logs output                                  |
+| Name, shorthand  | Default | Description                                                  |
+| :--------------- | :-----: | :----------------------------------------------------------- |
+| ` --follow, -f ` |         | Follow console output                                        |
+| ` --since `      |         | Show logs since relative timestamp (e.g. 42m for 42 minutes) |
+| ` --until `      |         | Show logs until relative timestamp (e.g. 42m for 42 minutes) |
 
 ## Parent command
 
-| Command                         | Description             |
-| :------------------------------ | :---------------------- |
-| [` inaccel coral `](command.md) | Manages coral container |
+| Command                       | Description             |
+| :---------------------------- | :---------------------- |
+| [` inaccel coral `](index.md) | Manages coral container |

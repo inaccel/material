@@ -31,14 +31,14 @@ managers currently available (including
 
 ### bitstream
 
-| Field name    | Type      | Required/Optional | Description                                                                  |
-| :-----------: | :-------: | :---------------: | :--------------------------------------------------------------------------- |
-| *name*        | string    | required          | The actual name of the FPGA bitstream.                                       |
-| *bitstreamId* | string    | required          | The desired package name (recommended layout is `[organisation].[package]`). |
-| *version*     | string    | required          | The artifact version.                                                        |
-| *description* | string    | optional          | Short description that may include hardware design notes.                    |
-| *platform*    | *platform | required          | Defines platform specific information.                                       |
-| *kernels*     | []kernel  | required          | Describes the available kernels (inside the bitstream) and their properties. |
+| Field name    | Type      | Required/Optional | Description                                                                             |
+| :-----------: | :-------: | :---------------: | :-------------------------------------------------------------------------------------- |
+| *name*        | string    | required          | The actual name of the FPGA bitstream.                                                  |
+| *bitstreamId* | string    | required          | The desired package name (recommended layout a reverse-DNS `[organisation].[package]`). |
+| *version*     | string    | required          | The artifact version.                                                                   |
+| *description* | string    | optional          | Short description that may include hardware design notes.                               |
+| *platform*    | *platform | required          | Defines platform specific information.                                                  |
+| *kernels*     | []kernel  | required          | Describes the available kernels (inside the bitstream) and their properties.            |
 
 > Sample:
 

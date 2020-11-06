@@ -1,7 +1,7 @@
 *![time/embed](Estimated reading time: {X})*
 
 In this section, we will teach you how to create your own simple application to
-invoke the accelerators implemented in [Part 3](bitstreams.md).
+invoke the accelerators implemented in [Part 3](part3.md).
 
 For the purpose of this tutorial, we will create an application using the
 [C++](https://docs.inaccel.com/api/cpp/annotated.html) API, though you can also check the programming

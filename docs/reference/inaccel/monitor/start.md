@@ -20,6 +20,6 @@ inaccel monitor start [command options]
 
 ## Parent command
 
-| Command                           | Description               |
-| :-------------------------------- | :------------------------ |
-| [` inaccel monitor `](command.md) | Manages monitor container |
+| Command                         | Description               |
+| :------------------------------ | :------------------------ |
+| [` inaccel monitor `](index.md) | Manages monitor container |

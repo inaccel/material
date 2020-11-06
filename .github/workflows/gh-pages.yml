@@ -7,7 +7,7 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     container:
-      image: squidfunk/mkdocs-material:6.0.1
+      image: squidfunk/mkdocs-material:6.1.3
     steps:
     - name: Checkout
       uses: actions/checkout@v2

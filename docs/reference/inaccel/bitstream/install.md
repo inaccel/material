@@ -8,7 +8,7 @@ remote source
 ## Usage
 
 ```text
-inaccel bitstream install [command options] <directory>
+inaccel bitstream install [command options] [<directory>]
 ```
 Where `<directory>` is the path to the bitstream directory source, defaults to
 the current directory.
@@ -24,6 +24,6 @@ the current directory.
 
 ## Parent command
 
-| Command                             | Description                    |
-| :---------------------------------- | :----------------------------- |
-| [` inaccel bitstream `](command.md) | Manages bitstream repositories |
+| Command                           | Description                    |
+| :-------------------------------- | :----------------------------- |
+| [` inaccel bitstream `](index.md) | Manages bitstream repositories |

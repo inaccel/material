@@ -75,57 +75,58 @@ nav:
       - 'Dockerfile': setup/docker.md
       - 'Kubernetes': setup/kubernetes.md
     - 'Release Notes': release-notes.md
-  - 'Getting Started':
-    - 'Part 1: Orientation': tutorial/orientation.md
-    - 'Part 2: Setup the working environment': tutorial/setup.md
-    - 'Part 3: Deploy your bitstreams': tutorial/bitstreams.md
-    - 'Part 4: Accelerate your app': tutorial/app.md
+  - 'Get started':
+    - 'Part 1: Orientation': get-started/index.md
+    - 'Part 2: Setup the working environment': get-started/part2.md
+    - 'Part 3: Deploy your bitstreams': get-started/part3.md
+    - 'Part 4: Accelerate your app': get-started/part4.md
   - 'Develop with InAccel':
-    - 'Examples': develop/examples.md
+    - 'Overview': develop.md
     - 'Projects':
       - 'Apache Spark':
-        - 'Run locally': develop/projects/spark/locally.md
-        - 'Run in a cluster': develop/projects/spark/in-a-cluster.md
-        - 'Machine Learning Examples': develop/projects/spark/ml-examples.md
-      - 'Jupyter Notebook': develop/projects/jupyter/notebook-server.md
-      - Keras: project/keras.md
+        - 'Run locally': project/spark/locally.md
+        - 'Run in a cluster': project/spark/in-a-cluster.md
+        - 'Machine Learning Examples': project/spark/ml-examples.md
+      - 'Jupyter Notebook': project/jupyter/lab.md
+      - 'Keras': project/keras.md
       - 'scikit-learn': project/scikit-learn.md
       - 'TF Quant Finance': project/tf-quant-finance.md
       - 'XGBoost': project/xgboost.md
+- 'Reference':
+  - 'File formats':
+    - 'Bitstream file reference': reference/file-formats/bitstream.md
+  - 'Command line reference':
+    - 'InAccel CLI (inaccel)':
+      - 'Use the InAccel command line': reference/inaccel/cli.md
+      - 'inaccel (base command)': reference/inaccel/index.md
+      - 'inaccel bitstream *':
+        - 'inaccel bitstream': reference/inaccel/bitstream/index.md
+        - 'inaccel bitstream parse': reference/inaccel/bitstream/parse.md
+        - 'inaccel bitstream install': reference/inaccel/bitstream/install.md
+        - 'inaccel bitstream list': reference/inaccel/bitstream/list.md
+        - 'inaccel bitstream remove': reference/inaccel/bitstream/remove.md
+      - 'inaccel config *':
+        - 'inaccel config': reference/inaccel/config/index.md
+        - 'inaccel config license': reference/inaccel/config/license.md
+        - 'inaccel config repository': reference/inaccel/config/repository.md
+      - 'inaccel coral *':
+        - 'inaccel coral': reference/inaccel/coral/index.md
+        - 'inaccel coral console': reference/inaccel/coral/console.md
+        - 'inaccel coral logs': reference/inaccel/coral/logs.md
+        - 'inaccel coral start': reference/inaccel/coral/start.md
+        - 'inaccel coral stop': reference/inaccel/coral/stop.md
+      - 'inaccel docker *':
+        - 'inaccel docker': reference/inaccel/docker/index.md
+        - 'inaccel docker prune': reference/inaccel/docker/prune.md
+        - 'inaccel docker status': reference/inaccel/docker/status.md
+      - 'inaccel monitor *':
+        - 'inaccel monitor': reference/inaccel/monitor/index.md
+        - 'inaccel monitor start': reference/inaccel/monitor/start.md
+        - 'inaccel monitor stop': reference/inaccel/monitor/stop.md
   - 'Application Programming Interfaces (APIs)':
     - 'C++': https://docs.inaccel.com/api/cpp
     - 'Java': https://docs.inaccel.com/api/java
     - 'Python': https://docs.inaccel.com/api/python
-- 'Reference':
-  - 'InAccel CLI (inaccel)':
-    - 'Use the InAccel command line': reference/inaccel/overview.md
-    - 'inaccel (base command)': reference/inaccel/command.md
-    - 'inaccel bitstream *':
-      - 'inaccel bitstream': reference/inaccel/bitstream/command.md
-      - 'inaccel bitstream parse': reference/inaccel/bitstream/parse.md
-      - 'inaccel bitstream install': reference/inaccel/bitstream/install.md
-      - 'inaccel bitstream list': reference/inaccel/bitstream/list.md
-      - 'inaccel bitstream remove': reference/inaccel/bitstream/remove.md
-    - 'inaccel config *':
-      - 'inaccel config': reference/inaccel/config/command.md
-      - 'inaccel config license': reference/inaccel/config/license.md
-      - 'inaccel config repository': reference/inaccel/config/repository.md
-    - 'inaccel coral *':
-      - 'inaccel coral': reference/inaccel/coral/command.md
-      - 'inaccel coral console': reference/inaccel/coral/console.md
-      - 'inaccel coral logs': reference/inaccel/coral/logs.md
-      - 'inaccel coral start': reference/inaccel/coral/start.md
-      - 'inaccel coral stop': reference/inaccel/coral/stop.md
-    - 'inaccel docker *':
-      - 'inaccel docker': reference/inaccel/docker/command.md
-      - 'inaccel docker prune': reference/inaccel/docker/prune.md
-      - 'inaccel docker status': reference/inaccel/docker/status.md
-    - 'inaccel monitor *':
-      - 'inaccel monitor': reference/inaccel/monitor/command.md
-      - 'inaccel monitor start': reference/inaccel/monitor/start.md
-      - 'inaccel monitor stop': reference/inaccel/monitor/stop.md
-  - 'File formats':
-    - 'Bitstream file reference': reference/file-formats/bitstream.md
   - 'Glossary':
     - 'accelerator': glossary/accelerator.md
     - 'bitstream': glossary/bitstream.md
@@ -150,6 +151,9 @@ plugins:
 - git-revision-date-localized
 - minify:
     minify_html: true
+- redirects:
+    redirect_maps:
+      get-started/part1.md: get-started/index.md
 - search
 repo_url: https://github.com/inaccel
 site_author: InAccel

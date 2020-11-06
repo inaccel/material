@@ -8,10 +8,10 @@ extract the most value out of our products.
 
 This *Getting Started* tutorial consists of the following **four** parts:
 
-0. Orientation
-1. [Setup the working environment](setup.md)
-2. [Deploy your bitstreams](bitstreams.md)
-3. [Accelerate your app](app.md)
+1. Orientation
+2. [Setup the working environment](part2.md)
+3. [Deploy your bitstreams](part3.md)
+4. [Accelerate your app](part4.md)
 
 Prior to the hands-on tutorial describing the exact steps on how to get started,
 we consider valuable to provide some motivation behind the necessity of an
@@ -98,7 +98,7 @@ can be found [here](https://inaccel.com/bitstream-repository).
 *Bitstream deployment* is the process of storing your bitstream artifact into a
 bitstream repository. Once your bitstream is deployed, you can expect its
 kernels to be readily available from every application requesting accelerators
-from Coral. Additionally, through our [CLI](/reference/inaccel/overview)
+from Coral. Additionally, through our [CLI](/reference/inaccel/cli)
 you can list its available accelerators along with many other useful
 information.
 
@@ -130,6 +130,6 @@ compromising flexibility.
 * Encompass bitstream management and protection capabilities.
 
 Since we briefly covered the necessity of a universal FPGA resource manager as
-well as InAccel's approach on the issue, continue to [Part 2](setup.md) to setup
+well as InAccel's approach on the issue, continue to [Part 2](part2.md) to setup
 your environment. You can find more information on Coral integrations and
 features [here](https://inaccel.com/coral-fpga-resource-manager).

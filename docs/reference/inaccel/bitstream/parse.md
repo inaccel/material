@@ -21,9 +21,9 @@ inaccel bitstream parse [command options]
 
 ## Parent command
 
-| Command                             | Description                    |
-| :---------------------------------- | :----------------------------- |
-| [` inaccel bitstream `](command.md) | Manages bitstream repositories |
+| Command                           | Description                    |
+| :-------------------------------- | :----------------------------- |
+| [` inaccel bitstream `](index.md) | Manages bitstream repositories |
 
 
 ## Examples

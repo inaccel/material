@@ -8,10 +8,9 @@ local or a remote repository
 ## Usage
 
 ```text
-inaccel bitstream list [command options] <checksums>
+inaccel bitstream list [command options] [<checksum>...]
 ```
-Where `<checksums>` is the md5 hashes of the bitstream information files that
-you are listing.
+Where `<checksum>` is the md5 hash of the bitstream information file that you are listing.
 
 ## Options
 
@@ -21,6 +20,6 @@ you are listing.
 
 ## Parent command
 
-| Command                             | Description                    |
-| :---------------------------------- | :----------------------------- |
-| [` inaccel bitstream `](command.md) | Manages bitstream repositories |
+| Command                           | Description                    |
+| :-------------------------------- | :----------------------------- |
+| [` inaccel bitstream `](index.md) | Manages bitstream repositories |

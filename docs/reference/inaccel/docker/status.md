@@ -12,6 +12,6 @@ inaccel docker status
 
 ## Parent command
 
-| Command                          | Description                |
-| :------------------------------- | :------------------------- |
-| [` inaccel docker `](command.md) | Manages inaccel containers |
+| Command                        | Description                |
+| :----------------------------- | :------------------------- |
+| [` inaccel docker `](index.md) | Manages inaccel containers |

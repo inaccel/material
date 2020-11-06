@@ -21,6 +21,6 @@ inaccel bitstream command [command options] [arguments...]
 
 ## Parent command
 
-| Command                      | Description                          |
-| :--------------------------- | :----------------------------------- |
-| [` inaccel `](../command.md) | The base command for the InAccel CLI |
+| Command                    | Description                          |
+| :------------------------- | :----------------------------------- |
+| [` inaccel `](../index.md) | The base command for the InAccel CLI |

@@ -42,6 +42,22 @@ For a detailed overview you can check our
 [Tutorial](/tutorial/bitstreams/#bitstream-deployment-concepts) on usage of
 bitstream repository capabilities.
 
+#### Accelerators
+
+We provide both **readily available** accelerator cores and
+**customized solutions** based on the customer’s requirements. The accelerators
+are provided in the form of ***IP cores*** and can be used either
+**on premises** or **in the Cloud**. FPGA accelerators can massively accelerate
+computational intensive algorithms and that is why they are a perfect fit for a
+plethora of cutting edge fields including data analytics, machine learning,
+compression algorithms etc.
+
+!!! hint "Wide Compatibility"
+
+	InAccel accelerators are fully compatible with **Amazon AWS**,
+	**Alibaba Cloud** and **Huawei Cloud** FPGA instances. They are also
+	compatible for both **Intel** and **Xilinx** FPGAs.
+
 ---
 
 ### InAccel CLI

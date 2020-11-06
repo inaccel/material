@@ -12,6 +12,6 @@ inaccel coral stop
 
 ## Parent command
 
-| Command                         | Description             |
-| :------------------------------ | :---------------------- |
-| [` inaccel coral `](command.md) | Manages coral container |
+| Command                       | Description             |
+| :---------------------------- | :---------------------- |
+| [` inaccel coral `](index.md) | Manages coral container |

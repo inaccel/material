@@ -7,10 +7,9 @@ Remove one or more bitstreams from the local or a remote repository
 ## Usage
 
 ```text
-inaccel bitstream remove [command options] <checksums>
+inaccel bitstream remove [command options] <checksum>...
 ```
-Where `<checksums>` is the md5 hashes of the bitstream information files that
-you are removing.
+Where `<checksum>` is the md5 hash of the bitstream information file that you are removing.
 
 ## Options
 
@@ -21,6 +20,6 @@ you are removing.
 
 ## Parent command
 
-| Command                             | Description                    |
-| :---------------------------------- | :----------------------------- |
-| [` inaccel bitstream `](command.md) | Manages bitstream repositories |
+| Command                           | Description                    |
+| :-------------------------------- | :----------------------------- |
+| [` inaccel bitstream `](index.md) | Manages bitstream repositories |

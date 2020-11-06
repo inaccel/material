@@ -4,7 +4,7 @@ This part of the tutorial refers primarily to bitstream developers who are
 willing to distribute their FPGA accelerators. By deploying their bitstreams
 their implemented accelerators will be available to easily get invoked by any
 application through Coral API. If you won't be writing your own bitstreams you
-may want to skip this section and move on to [Part 4](app.md) to learn how to
+may want to skip this section and move on to [Part 4](part4.md) to learn how to
 invoke prebuilt accelerators in your applications.
 
 In this section, we walk you through the process of installing an FPGA bitstream
@@ -275,7 +275,7 @@ the detailed [Bitstream Reference](/reference/file-formats/bitstream).
 Once you have created a bitstream artifact by providing a complete bitstream
 specification file along with your bitstream binary, you can easily deploy it
 through InAccel's CLI. Refer to
-[Command Line Interface Reference](/reference/inaccel/overview) for extensive
+[Command Line Interface Reference](/reference/inaccel/cli) for extensive
 CLI usage.
 
 !!! warning "The Bitstream binary and its specification file must reside in the same directory."
@@ -335,7 +335,7 @@ repository capabilities:
 **Step 1:**
 
 Start tracking your remote repository through
-[`inaccel config`](/reference/inaccel/config/command) command. For this
+[`inaccel config`](/reference/inaccel/config) command. For this
 tutorial, we will enter some dummy credentials where you can fill in your own
 according to your needs.
 
@@ -429,5 +429,5 @@ ACCELERATORS    2 x com.inaccel.math.vector.addition (float16* input1, float16* 
 ```
 
 That's it! You are now ready to move to
-[Part 4: Accelerate your app](app.md), to invoke your accelerators from your
+[Part 4: Accelerate your app](part4.md), to invoke your accelerators from your
 applications.

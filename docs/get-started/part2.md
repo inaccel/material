@@ -65,7 +65,7 @@ hence you only need a running instance when your applications are running.
 
 Nevertheless, we suggest to launch Coral now to complete your environment setup.
 If you wish, feel free to skip this section and come back before moving to
-[Part 4](app.md).
+[Part 4](part4.md).
 
 !!! warning
 
@@ -92,16 +92,17 @@ If you wish, feel free to skip this section and come back before moving to
 
 	```text
 	$ inaccel coral console
-	24 Coral FPGA Resource Manager
-
 	Welcome to
 	                          |
 	  __|   _      __|  _` |  |
 	 (     (   |  |    (   |  | community
-	 ___|  ___/  _|    __,_| _| version 1.7
+	 ___|  ___/  _|    __,_| _| version 2.0.0
 	                 by InAccel
+
+	Use exit or Ctrl-D (i.e. EOF) to quit
+	coral>
 	```
 
 Congratulations, you have successfully completed your InAccel environment setup.
-In [Part 3](bitstreams.md), we get our hands dirty by demonstrating how to
+In [Part 3](part3.md), we get our hands dirty by demonstrating how to
 package and deploy your accelerators.
