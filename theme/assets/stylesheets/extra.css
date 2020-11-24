@@ -39,6 +39,7 @@ small {
 }
 
 .md-content {
+  background-color: var(--md-default-bg-color);
   padding: 0 5%;
 }
 
@@ -73,6 +74,10 @@ small {
 
 .md-header-nav__title {
   margin-left: 0.4rem;
+}
+
+.md-main {
+  background-color: var(--md-sidebar-bg-color);
 }
 
 .md-main__inner {
@@ -124,10 +129,6 @@ small {
 
 .md-nav__title .md-nav__button.md-logo img, .md-nav__title .md-nav__button.md-logo svg {
   width: 6rem;
-}
-
-.md-sidebar {
-  background-color: var(--md-sidebar-bg-color);
 }
 
 .md-tabs {
