@@ -159,7 +159,7 @@ repo_url: https://github.com/inaccel
 site_author: InAccel
 site_description: InAccel is a product for you to build, ship and run FPGA accelerated applications
 site_name: InAccel Documentation
-site_url: https://docs.inaccel.com
+site_url: https://docs.inaccel.com/
 theme:
   custom_dir: theme
   features:
