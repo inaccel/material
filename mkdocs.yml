@@ -154,6 +154,12 @@ plugins:
 - redirects:
     redirect_maps:
       get-started/part1.md: get-started/index.md
+      reference/inaccel/command.md: reference/inaccel/index.md
+      reference/inaccel/bitstream/command.md: reference/inaccel/bitstream/index.md
+      reference/inaccel/config/command.md: reference/inaccel/config/index.md
+      reference/inaccel/coral/command.md: reference/inaccel/coral/index.md
+      reference/inaccel/docker/command.md: reference/inaccel/docker/index.md
+      reference/inaccel/monitor/command.md: reference/inaccel/monitor/index.md
 - search
 repo_url: https://github.com/inaccel
 site_author: InAccel
