@@ -26,4 +26,4 @@ distributions and architectures:
 ## Get started
 
 After setting up InAccel, you can learn the basics with
-[Getting started with InAccel](/tutorial/orientation).
+[Getting started with InAccel](/get-started).

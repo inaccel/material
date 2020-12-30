@@ -39,7 +39,7 @@ which are kept and maintained in an organized way. The concept of a
 and eliminates cumbersome procedures of manually tracking them.
 
 For a detailed overview you can check our
-[Tutorial](/tutorial/bitstreams/#bitstream-deployment-concepts) on usage of
+[Tutorial](/get-started/part3/#bitstream-deployment) on usage of
 bitstream repository capabilities.
 
 #### Accelerators
@@ -75,4 +75,4 @@ distributions.
 ### Getting Started
 
 After installing `inaccel`, you can learn the basics with our
-[Getting Started](/tutorial/orientation) guide.
+[Getting Started](/get-started) guide.

@@ -245,6 +245,6 @@ You can download a Bitstream artifact directly using the following command:
 
 !!! info
 
-	In our Getting Started guide [Part 3](/tutorial/bitstreams) you have
+	In our Getting Started guide [Part 3](/get-started/part3) you have
 	the chance to walk through the complete Bitstream lifecycle (development,
 	packaging, deployment and resolution).

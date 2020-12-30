@@ -51,7 +51,7 @@ from your accelerators so you can deliver high-performance software quickly.
 
 You can setup InAccel toolset on any [Linux platform](/install/linux) and enable
 FPGA accelerator orchestration with a free license issued by InAccel, using this
-[link](/tutorial/setup/#generate-a-license).
+[link](/get-started/part2/#generate-a-license).
 
 ### 2. Install InAccel - H2O Python package
 
