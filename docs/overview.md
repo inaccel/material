@@ -19,7 +19,7 @@ The following figure summarizes InAccel's major **components**:
 high-level APIs in Java, Scala, Python and C++, and a unified engine that
 supports every multi-FPGA platform. Coral is also shipped with higher-level
 integrations including **Apache Arrow** for zero-copy, lightning-fast data
-transfers and **Apache Spark** for seamless maching learning acceleration.
+transfers and **Apache Spark** for seamless machine learning acceleration.
 
 *Coral* runs on any UNIX-like system (e.g. Linux). It’s easy to deploy on any
 machine, since it lives inside a containerized environment — all you need is to

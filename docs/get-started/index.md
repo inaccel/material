@@ -84,7 +84,7 @@ aforementioned artifacts is kept and maintained in an organized way. Protection
 (encryption/decryption) capabilities enable secure storage of your FPGA binaries
 to local and remote repositories with fine-grained access control policies.
 Moreover, the supplied metadata in each artifact simplify the process of
-maintaining snapshot/release artifacts, allowing continous integration and
+maintaining snapshot/release artifacts, allowing continuous integration and
 delivery of your accelerated solutions through tailor made development
 pipelines. Now the evaluation and benchmarking of accelerators of different
 target vendors or versions is rendered trivial.

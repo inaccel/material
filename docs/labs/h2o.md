@@ -123,7 +123,7 @@ predictors = images.columns[:-1]
 
 	Changing the `tree_method` param from `exact` to `fpga_exact` and retraining
 	the model, you will achieve more than **5x speed-up** compared to an
-	8-threaded Intel Xeon CPU execution, whithout compromising the
+	8-threaded Intel Xeon CPU execution, without compromising the
 	classification or regression outcome.
 
 	Find more about InAccel XGBoost project [here](/project/xgboost).

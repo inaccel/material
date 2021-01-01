@@ -77,7 +77,7 @@ section of MLlib Programming Guide.
 > **Run LogisticRegression Application**
 > [[src](https://bitbucket.org/inaccel/release/src/master/examples/spark/src/main/scala/org/apache/spark/examples/inaccel/ml/LogisticRegressionExample.scala)]
 
-!!! info "For a non-accelerated execution ommit `--inaccel`."
+!!! info "For a non-accelerated execution omit `--inaccel`."
 
 === "locally"
 
@@ -116,7 +116,7 @@ section of MLlib Programming Guide.
 > **Run LogisticRegression Application**
 > [[src](https://bitbucket.org/inaccel/release/src/master/examples/spark/src/main/scala/org/apache/spark/examples/inaccel/ml/LogisticRegressionExample.scala)]
 
-!!! info "For a non-accelerated execution ommit `--inaccel`."
+!!! info "For a non-accelerated execution omit `--inaccel`."
 
 === "locally"
 
@@ -172,7 +172,7 @@ MLlib Programming Guide.
 > **Run KMeans Application**
 > [[src](https://bitbucket.org/inaccel/release/src/master/examples/spark/src/main/scala/org/apache/spark/examples/inaccel/ml/KMeansExample.scala)]
 
-!!! info "For a non-accelerated execution ommit `--inaccel`."
+!!! info "For a non-accelerated execution omit `--inaccel`."
 
 === "locally"
 
@@ -211,7 +211,7 @@ MLlib Programming Guide.
 > **Run KMeans Application**
 > [[src](https://bitbucket.org/inaccel/release/src/master/examples/spark/src/main/scala/org/apache/spark/examples/inaccel/ml/KMeansExample.scala)]
 
-!!! info "For a non-accelerated execution ommit `--inaccel`."
+!!! info "For a non-accelerated execution omit `--inaccel`."
 
 === "locally"
 

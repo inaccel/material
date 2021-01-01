@@ -9,8 +9,17 @@ interfaces for [Java](https://docs.inaccel.com/api/java), Scala and [Python](htt
 
 ## Prerequisites
 
-1. Coral API (`coral-api`) package should be installed in your system. Complete
-instructions on how to install it are provided [here](https://docs.inaccel.com/api/cpp/annotated.html).
+Coral API (`coral-api`) package should be installed in your system.
+
+* For Debian-based installations
+	```shell
+	apt install coral-api
+	```
+
+* For RPM-based installations
+	```shell
+	yum install coral-api
+	```
 
 ## Introduction
 
@@ -97,7 +106,7 @@ should follow the naming convention explained below.
 
 ### What name should I pass to `inaccel::request`?
 
-The name of your request should be identical to the the corresponding
+The name of your request should be identical to the corresponding
 accelerator's function prototype. Be aware that you must have deployed your
 bitstream for which you wish to invoke its kernels. If no such valid accelerator
 exists the request will be dismissed.

@@ -159,7 +159,7 @@ configuration is similar to the one in the screenshot below, save and finish!
 
 * ### Aggregate local and remote repositories (optional)
 
-	JFrog gives you you the capability to proxy and cache any
+	JFrog gives you the capability to proxy and cache any
 	[Remote repository](https://jfrog.com/confluence/display/RTF/Remote+Repositories),
 	but also aggregate all these (local and remote) resources under a single
 	[Virtual repository](https://jfrog.com/confluence/display/RTF/Remote+Repositories).

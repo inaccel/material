@@ -50,7 +50,7 @@ can be easily achieved through the following steps:
 2. Retrieve the license key attached to your email and store it in your local
 	InAccel settings to use it every time you launch Coral (the *settings* file
 	can be found below the `~/.inaccel` directory). Simply issue the following
-	commmand:
+	command:
 
 	```test
 	$ inaccel config license $CORAL_LICENSE_KEY
@@ -88,7 +88,7 @@ If you wish, feel free to skip this section and come back before moving to
 	docker.io/inaccel/coral:latest
 	```
 
-2. Verify Coral is successfuly launched by issuing `inaccel coral console`.
+2. Verify Coral is successfully launched by issuing `inaccel coral console`.
 
 	```text
 	$ inaccel coral console

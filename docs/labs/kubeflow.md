@@ -193,7 +193,7 @@ depends on where is your host machine.
 	kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80 --address 0.0.0.0
 	```
 
-	Open a new SSH client specifying the connections to be forwared to the
+	Open a new SSH client specifying the connections to be forwarded to the
 	remote port, i.e:
 
 	```bash
@@ -243,7 +243,7 @@ These are three steps in order to
 
 	![submit](/img/kubeflow-submit.png)
 
-3. Run the experiment from the Katib UI by submiting the YAML file and
+3. Run the experiment from the Katib UI by submitting the YAML file and
 	'**Monitor**' the trials.
 
 	![monitor](/img/kubeflow-monitor.png)

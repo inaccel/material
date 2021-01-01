@@ -311,7 +311,7 @@ If the output of the command matches the one presented above then you have
 successfully installed the demo bitstream artifact to your local repository.
 After installing the bitstream artifact to your local repository, you can expect
 that all kernels of the corresponding bitstream will be easily and securely
-accesible from every application requesting accelerators from Coral.
+accessible from every application requesting accelerators from Coral.
 
 As a bonus, to list the available accelerators of your recently deployed
 bitstream along with their
