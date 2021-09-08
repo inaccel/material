@@ -147,6 +147,7 @@ nav:
     - 'Build H2O models with the FPGA backend': labs/h2o.md
     - 'Using OpenShift for accelerated Data Analytics': labs/openshift-aws.md
     - 'Hybrid auto-scalable FPGA deployment': 'labs/auto-scaling-aws.md'
+    - 'Get Up and Running with FPGAs in Rancher Kubernetes Clusters': 'labs/rancher/index.md'
 plugins:
 - awesome-pages
 - git-revision-date-localized
