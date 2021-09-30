@@ -17,191 +17,94 @@ include:
 * **Central Dashboard**, that provides access to the other main components
 through a Web UI
 * **Notebook Servers**, to set up Jupyter notebooks
-* **Katib**, for automated tuning of ML model's hyperparameters and
+* **AutoML (Katib)**, for automated tuning of ML model's hyperparameters and
 * **Pipelines**, for building end-to-end ML workflows, based on containers.
 
 Although, until now, the kubeflow community has presented applications on CPUs
-or GPUs, InAccel brings another option. With **InAccel FPGA Kubernetes plugin**,
+or GPUs, InAccel brings another option. With [**InAccel FPGA Operator**](https://artifacthub.io/packages/chart/inaccel/fpga-operator),
 the accelerated applications can be seamlessly orchestrated without worrying
 about resource management and utilization of the FPGA cluster.
 
 ### Prerequisites
 
-To run this tutorial, you need an Linux machine with a remarkable amount of
+To run this tutorial, you need a Linux machine with a remarkable amount of
 cores, RAM and storage. You will also need root privileges to run some of the
 steps. For the sake of simplicity in this tutorial we will use
-[Minikube](https://minikube.sigs.k8s.io) to run Kubernetes, since InAccel FPGA
-plugin can be enabled on any K8s cluster (e.g. Amazon EKS, Google GKE, etc).
+[MicroK8s](https://microk8s.io/) to run Kubernetes, since InAccel FPGA Operator
+can be enabled on any K8s cluster (e.g. Amazon EKS, Google GKE, etc).
 
-## Set up Docker, kubectl, Minikube and InAccel
+## Set up MicroK8s
 
 The following steps present how to create, configure and launch a single-node
-Kubernetes cluster on a RHEL-based Linux system.
+Kubernetes cluster on an Ubuntu Linux system.
 
-### 1. Install Docker
+### 1. Install MicroK8s
 
-[Docker](https://docs.docker.com/install) is an open-source containerization
-technology for building and sharing your applications on any environment.
-
-```bash
-sudo yum install -y yum-utils \
-	device-mapper-persistent-data \
-	lvm2
-
-sudo yum-config-manager \
-	--add-repo \
-	https://download.docker.com/linux/centos/docker-ce.repo
-
-sudo yum install docker-ce docker-ce-cli containerd.io
-
-sudo systemctl start docker
-```
-
-### 2. Install kubectl
-
-The Kubernetes command-line tool,
-[kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl), allows you to
-run commands against Kubernetes clusters. You can use kubectl to deploy
-applications, inspect and manage cluster resources, and view logs.
-
-```bash
-curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
-
-chmod +x ./kubectl
-
-sudo mv ./kubectl /usr/local/bin/kubectl
-```
-
-### 3. Install Minikube
-
-[Minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) provides a
-single-node K8s cluster that is ideal for development and testing purposes.
+[MicroK8s](https://microk8s.io/docs) provides a powerful K8s cluster that is ideal
+for development and testing purposes.
 Alternatively, you can use Kubernetes on Amazon Web Services, Google Cloud
 Platform or any other cloud provider.
 
 ```bash
-curl -Lo minikube https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 \
-	&& chmod +x minikube
+# install with snap
+sudo snap install microk8s --classic --channel=1.21/stable
 
-sudo mkdir -p /usr/local/bin/
-sudo install minikube /usr/local/bin/
+# join the group
+sudo usermod -a -G microk8s $USER
+sudo chown -f -R $USER ~/.kube
+
+# re-enter the session for the group update to take place
+su - $USER
+
+# wait for the Kubernetes services to initialize:
+microk8s status --wait-ready
 ```
 
-### 4. Install InAccel
+### 2. Enable addons, Kubeflow and optionally set aliases
 
-[InAccel](https://docs.inaccel.com/inaccel/overviews) is an open platform for
-developing, shipping, and running accelerated applications. InAccel enables you
-to separate your applications from your accelerators so you can deliver
-high-performance software quickly.
+In order for the InAccel FPGA Operator to work properly, dns, helm3 and storage addons need to be additionally enabled.
 
 ```bash
-curl -sL https://jfrog.inaccel.com/artifactory/generic/packages/inaccel.repo | \
-	sudo tee /etc/yum.repos.d/inaccel.repo
+microk8s enable dns helm3 storage kubeflow
 
-sudo yum install -y inaccel
-
-sudo systemctl restart docker
+alias helm="microk8s helm3"
+alias kubectl="microk8s kubectl"
 ```
 
-### 5. Start Minikube
+### 3. Deploy InAccel FPGA Operator
+[InAccel FPGA Operator](https://artifacthub.io/packages/chart/inaccel/fpga-operator) is a Helm chart deployed, cloud-native method to standardize and automate the deployment of all necessary components for provisioning FPGA-enabled Kubernetes systems.
 
 ```bash
-minikube start --vm-driver=none
+helm repo add inaccel https://setup.inaccel.com/helm
+helm install inaccel inaccel/fpga-operator --set kubelet=/var/snap/microk8s/common/var/lib/kubelet
 ```
 
-### 6. Deploy InAccel FPGA Plugin
-
-Having your Kubernetes cluster up and running you only need two steps to enable
-FPGA accelerator orchestration. Get a free license
-[**here**](https://inaccel.com/license).
-
-```bash
-kubectl create secret generic coral-license-key -n kube-system \
-	--from-literal=CORAL_LICENSE_KEY='<your licence key>'
-
-kubectl apply -f https://bitbucket.org/inaccel/deploy/raw/master/inaccel-fpga-plugin.yml
-```
-
-## Set up Kubeflow
-
-After setting up the above tools we can create a deployment of Kubeflow with all
-its core components without any external dependencies as explained
-[here](https://kubeflow.org/docs/started/k8s/kfctl-k8s-istio).
-
-### 1. Install kfctl
-
-Download a kfctl [release](https://github.com/kubeflow/kfctl/releases) and
-extract the included binary.
-
-```bash
-wget -qO- https://github.com/kubeflow/kfctl/releases/download/v1.0.1/kfctl_v1.0.1-0-gf3edb9b_linux.tar.gz | \
-	tar -zxvf -
-
-sudo install kfctl /usr/local/bin
-```
-
-### 2. Configure and deploy Kubeflow
-
-Set the configuration file to use when deploying Kubeflow.
-
-```bash
-export CONFIG_URI="https://raw.githubusercontent.com/kubeflow/manifests/v1.0-branch/kfdef/kfctl_k8s_istio.v1.0.1.yaml"
-```
-
-Then set the Kubeflow application directory for this deployment.
-
-```bash
-mkdir -p kftest
-cd kftest
-```
-
-Configure and deploy Kubeflow using the following `kfctl apply` command.
-
-```bash
-kfctl apply -V -f ${CONFIG_URI}
-```
-
-List all the pods in the Kubeflow namespace.
-
-```bash
-kubectl get pods -n kubeflow
-```
-
-### 3. Access Kubeflow Dashboard
+### 4. Access Kubeflow Dashboard
 
 The way you can access Central Dashboard and navigate through its components,
-depends on where is your host machine.
+depends on where Kubeflow is deployed. You can find detailed instructions on how to access the Kubeflow dashboard [here](https://www.kubeflow.org/docs/distributions/microk8s/kubeflow-on-microk8s/#accessing-the-kubeflow-dashboard) .
 
-* If the Kubernetes cluster is running **locally** run these commands:
+* If you installed MicroK8s directly on your Linux machine, you can view the Kubeflow dashboard as follows:
 
-	```bash
-	export INGRESS_HOST=$(minikube ip)
-
-	export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}’)
-	```
-
-	And then in a web browser visit:
-
-	```text
-	http://$INGRESS_HOST:$INGRESS_PORT
-	```
+	1. Open a web browser window.
+	2. Access the link provided after you have enabled Kubeflow (for example, `10.64.140.43.nip.io`).
 
 * If the cluster is running on a **remote** machine like in our case (AWS EC2 f1
-	instance) run:
+	instance):
+
+	1. Log out from the current session in your terminal using the exit command.
+	2. Re-establish connection to the machine using SSH, enabling SOCKS proxy with the `-D9999` parameter.
 
 	```bash
-	kubectl port-forward -n istio-system svc/istio-ingressgateway 8080:80 --address 0.0.0.0
+	ssh -D9999 <user>@<machine_public_ip>
 	```
 
-	Open a new SSH client specifying the connections to be forwarded to the
-	remote port, i.e:
+	In your host operating system or browser, go to `Settings > Network > Network Proxy`, and enable SOCKS proxy pointing to: `127.0.0.1:9999`.
 
-	```bash
-	ssh -L 9090:localhost:8080 <user>@<hostname>
-	```
+	Finally, access the Kubeflow dashboard by:
 
-	Since we used `9090` as the local TCP port, access the central navigation
-	dashboard at `localhost:9090`.
+	- Opening a new web browser window.
+	- Accessing the link provided after you have enabled Kubeflow (for example, `10.64.140.43.nip.io`).
 
 ![dashboard](/img/kubeflow-dashboard.png)
 
@@ -269,37 +172,38 @@ other trial specifications we create a `trialTemplate` YAML, in which we:
 * load the bitstream package for XGBoost accelerator and
 * allocate the FPGA resources as we mentioned previously.
 
+
 === "FPGA"
 
 	```yaml
 	apiVersion: batch/v1
 	kind: Job
-	metadata:
-	  name: {{.Trial}}
-	  namespace: {{.NameSpace}}
 	spec:
 	  template:
+	    metadata:
+	      labels:
+	        inaccel/fpga: enabled
+	      annotations:
+	        inaccel/cli: |
+	          bitstream install --mode others https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/com/inaccel/xgboost/0.1/2exact
 	    spec:
 	      containers:
-	      - name: {{.Trial}}
-	        image: docker.io/inaccel/jupyter:lab
-	        command:
-	        - "python3"
-	        args:
-	        - "XGBoost/parameter-tuning.py"
-	        - "--name SVHN"
-	        - "--test-size 0.35"
-	        - "--max-depth 10"
-	        - "--tree-method fpga_exact"
-	        - "--bitstream https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/xgboost/0.1/2exact"
-	        {{- with .HyperParameters}}
-	        {{- range .}}
-	        - "{{.Name}}={{.Value}}"
-	        {{- end}}
-	        {{- end}}
-	        resources:
-	          limits:
-	        	xilinx/aws-vu9p-f1: 1
+	        - name: training-container
+	          image: "docker.io/inaccel/jupyter:lab"
+	          command:
+	            - python3
+	            - XGBoost/parameter-tuning.py
+	          args:
+	            - "--name=SVHN"
+	            - "--test-size=0.35"
+	            - "--tree-method=fpga_exact"
+	            - "--max-depth=10"
+	            - "--alpha=${trialParameters.alpha}"
+	            - "--eta=${trialParameters.eta}"
+	            - "--subsample=${trialParameters.subsample}"
+	          resources:
+	            limits:
+	              xilinx/aws-vu9p-f1: 1
 	      restartPolicy: Never
 	```
 
@@ -308,28 +212,22 @@ other trial specifications we create a `trialTemplate` YAML, in which we:
 	```yaml
 	apiVersion: batch/v1
 	kind: Job
-	metadata:
-	  name: {{.Trial}}
-	  namespace: {{.NameSpace}}
 	spec:
 	  template:
 	    spec:
 	      containers:
-	      - name: {{.Trial}}
-	        image: docker.io/inaccel/jupyter:lab
-	        command:
-	        - "python3"
-	        args:
-	        - "XGBoost/parameter-tuning.py"
-	        - "--name SVHN"
-	        - "--test-size 0.35"
-	        - "--max-depth 10"
-	        - "--tree-method exact"
-	        {{- with .HyperParameters}}
-	        {{- range .}}
-	        - "{{.Name}}={{.Value}}"
-	        {{- end}}
-	        {{- end}}
+	        - name: training-container
+	          image: "docker.io/inaccel/jupyter:lab"
+	          command:
+	            - python3
+	            - XGBoost/parameter-tuning.py
+	          args:
+	            - "--name=SVHN"
+	            - "--test-size=0.35"
+	            - "--max-depth=10"
+	            - "--alpha=${trialParameters.alpha}"
+	            - "--eta=${trialParameters.eta}"
+	            - "--subsample=${trialParameters.subsample}"
 	      restartPolicy: Never
 	```
 
