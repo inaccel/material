@@ -124,10 +124,12 @@ nav:
         - 'inaccel monitor': reference/inaccel/monitor/index.md
         - 'inaccel monitor start': reference/inaccel/monitor/start.md
         - 'inaccel monitor stop': reference/inaccel/monitor/stop.md
-  - 'Application Programming Interfaces (APIs)':
-    - 'C++': https://docs.inaccel.com/api/cpp
-    - 'Java': https://docs.inaccel.com/api/java
-    - 'Python': https://docs.inaccel.com/api/python
+  - 'API reference':
+    - 'Coral API':
+      - 'C (Core)': https://setup.inaccel.com/coral-api/?c
+      - 'C++': https://setup.inaccel.com/coral-api/?cpp
+      - 'Java': https://setup.inaccel.com/coral-api/?java
+      - 'Python': https://setup.inaccel.com/coral-api/?python
   - 'Glossary':
     - 'accelerator': glossary/accelerator.md
     - 'bitstream': glossary/bitstream.md
