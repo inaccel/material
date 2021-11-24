@@ -77,6 +77,8 @@ provider.
 
 ![Add Cluster](img/create_cluster.png)
 
+![Add Cluster 2](img/create_cluster_2.png)
+
 Right after, we are going to create two node pool templates: one for the master
 nodes and one for the worker ones. To do so, we select the plus icon (**+**)
 under the **Template** column.
@@ -101,57 +103,48 @@ as shown below:
 We left all other options set to the defaults. After a couple of minutes the
 cluster is up and running.
 
-![Clusters](img/clusters.png)
+![Cluster](img/cluster.png)
 
-![Cluster Overview](img/demo_cluster.png)
+![Cluster Detail](img/cluster_detail.png)
 
 ### Set Up the FPGA Operator
 
 It is time to setup a catalog in Rancher using the
 [FPGA Operator repository](https://artifacthub.io/packages/helm/inaccel/fpga-operator).
 
-Using the Rancher **Global** context menu, we select the cluster we want to
-install into
+Using the Rancher **Apps & Marketplace** menu, we search for the FPGA Operator chart.
 
-![Select Cluster](img/select_catalog_cluster.png)
+![InAccel FPGA Operator](img/inaccel_chart.png)
 
-and then use the **Tools** menu to see the list of catalogs.
+Selecting the chart, we can get more information on the chart itself as well as the default configuration and the values that can be configured.
 
-![List Catalogs](img/list_catalogs.png)
+![InAccel FPGA Operator Info](img/inaccel_chart_info.png)
 
-We click the **Add Catalog** button and give it a name and the URL
-https://setup.inaccel.com/helm.
+We select **Install**. We don't have to specify something in steps 1 and 2 so we just proceed by selecting the **Next** and **Install** buttons respectively.
 
-We have also selected **Helm v3**. We click Create to add the catalog to
-Rancher.
+![InAccel FPGA Operator Step 1](img/inaccel_chart_step_1.png)
 
-![Add Catalog](img/add_inaccel_catalog.png)
+![InAccel FPGA Operator Step 2](img/inaccel_chart_step_2.png)
 
-In the System project that we deployed the InAccel catalog, we select **Apps**
+After a few moments the application is successfully deployed.
 
-![Apps](img/select_apps.png)
+![InAccel Deployed](img/inaccel_deployed.png)
 
-and clik **Launch** button on the right top.
+To get more information on the components deployed we can select the application name.
 
-![Launch App](img/launch_app.png)
+![InAccel Overview](img/inaccel_overview.png)
 
-We can search for "inaccel" or scroll down to the catalog we just created.
+To view the pod that InAccel FPGA Operator DaemonSet has deployed we select the name right to the DaemonSet property.
 
-![InAccel Catalog](img/inaccel_catalog.png)
+![InAccel DaemonSet Pod](img/inaccel_daemonset.png)
 
-Click on the "fpga-operator" app and add your license (when using our enterprise
-solution) in the Answers section as shown below, and then click **Launch**.
+We can also get a more detailed view of the containers inside that pod.
 
-![Deploy App](img/deploy_app_inaccel.png)
+![InAccel DaemonSet Pod Containers](img/inaccel_daemonset_containers.png)
 
-After some minutes, the APP is successfully deployed
+We can further inspect InAccel Coral logs using the three dots right to the DaemonSet pod entry and select **View Logs**.
 
-![App Deployed](img/app_deployed.png)
-
-and the InAccel daemonset is deployed on all FPGA nodes (screenshot from Rancher
-Cluster Explorer).
-
-![InAccel Daemonset](img/inaccel_daemonset.png)
+![InAccel Coral Logs](img/inaccel_coral_logs.png)
 
 ### Make use of the FPGAs
 
@@ -164,7 +157,7 @@ for FPGA usage.
 
 ### Deploy an FPGA-Capable workload
 
-We open the Cluster Explorer in Rancher and select **Pods** from the left menu
+We open the **Workload** menu and select **Pods** from the menu
 column. Then from the right top corner we select **Create from YAML**.
 
 ![Pods](img/pods.png)
@@ -173,7 +166,7 @@ For this workload, we have already prepared a pod specification (available also
 on [github](https://github.com/inaccel/vadd/blob/master/deploy/pod.yaml)) that
 simply invokes a vector addition workload for FPGA acceleration:
 
-![Create Pod](img/pod_create.png)
+![Create Pod](img/pod_yaml.png)
 
 And after a couple of seconds we see that our workload has successfully ran on
 the FPGA device and returned the correct results (*Test PASSED*).
