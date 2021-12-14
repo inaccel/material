@@ -2,7 +2,7 @@
 
 ## Description
 
-Configures bitstream repositories and coral container settings
+Configures bitstream repositories
 
 ## Usage
 
@@ -14,7 +14,6 @@ inaccel config command [command options] [arguments...]
 
 | Command                                         | Description                               |
 | :---------------------------------------------- | :---------------------------------------- |
-| [` inaccel config license `](license.md)        | Set the InAccel Coral license             |
 | [` inaccel config repository `](repository.md)  | Define the details of a remote repository |
 
 ## Parent command

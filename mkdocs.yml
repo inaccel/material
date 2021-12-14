@@ -98,7 +98,6 @@ nav:
     - 'Bitstream file reference': reference/file-formats/bitstream.md
   - 'Command line reference':
     - 'InAccel CLI (inaccel)':
-      - 'Use the InAccel command line': reference/inaccel/cli.md
       - 'inaccel (base command)': reference/inaccel/index.md
       - 'inaccel bitstream *':
         - 'inaccel bitstream': reference/inaccel/bitstream/index.md
@@ -108,22 +107,16 @@ nav:
         - 'inaccel bitstream remove': reference/inaccel/bitstream/remove.md
       - 'inaccel config *':
         - 'inaccel config': reference/inaccel/config/index.md
-        - 'inaccel config license': reference/inaccel/config/license.md
         - 'inaccel config repository': reference/inaccel/config/repository.md
-      - 'inaccel coral *':
-        - 'inaccel coral': reference/inaccel/coral/index.md
-        - 'inaccel coral console': reference/inaccel/coral/console.md
-        - 'inaccel coral logs': reference/inaccel/coral/logs.md
-        - 'inaccel coral start': reference/inaccel/coral/start.md
-        - 'inaccel coral stop': reference/inaccel/coral/stop.md
-      - 'inaccel docker *':
-        - 'inaccel docker': reference/inaccel/docker/index.md
-        - 'inaccel docker prune': reference/inaccel/docker/prune.md
-        - 'inaccel docker status': reference/inaccel/docker/status.md
-      - 'inaccel monitor *':
-        - 'inaccel monitor': reference/inaccel/monitor/index.md
-        - 'inaccel monitor start': reference/inaccel/monitor/start.md
-        - 'inaccel monitor stop': reference/inaccel/monitor/stop.md
+    - 'InAccel Docker CLI reference':
+      - 'docker inaccel (base subcommand)': reference/docker/inaccel/index.md
+      - 'docker inaccel config': reference/docker/inaccel/config.md
+      - 'docker inaccel down': reference/docker/inaccel/down.md
+      - 'docker inaccel exec': reference/docker/inaccel/exec.md
+      - 'docker inaccel logs': reference/docker/inaccel/logs.md
+      - 'docker inaccel ps': reference/docker/inaccel/ps.md
+      - 'docker inaccel run': reference/docker/inaccel/run.md
+      - 'docker inaccel up': reference/docker/inaccel/up.md
   - 'API reference':
     - 'Coral API':
       - 'C (Core)': https://setup.inaccel.com/coral-api/?c
@@ -148,8 +141,8 @@ nav:
     - 'Accelerate ML workflows on Katib': labs/katib.md
     - 'Build H2O models with the FPGA backend': labs/h2o.md
     - 'Using OpenShift for accelerated Data Analytics': labs/openshift-aws.md
-    - 'Hybrid auto-scalable FPGA deployment': 'labs/auto-scaling-aws.md'
-    - 'Get Up and Running with FPGAs in Rancher Kubernetes Clusters': 'labs/rancher/index.md'
+    - 'Hybrid auto-scalable FPGA deployment': labs/auto-scaling-aws.md
+    - 'Get Up and Running with FPGAs in Rancher Kubernetes Clusters': labs/rancher/index.md
 plugins:
 - awesome-pages
 - git-revision-date-localized
@@ -158,12 +151,6 @@ plugins:
 - redirects:
     redirect_maps:
       get-started/part1.md: get-started/index.md
-      reference/inaccel/command.md: reference/inaccel/index.md
-      reference/inaccel/bitstream/command.md: reference/inaccel/bitstream/index.md
-      reference/inaccel/config/command.md: reference/inaccel/config/index.md
-      reference/inaccel/coral/command.md: reference/inaccel/coral/index.md
-      reference/inaccel/docker/command.md: reference/inaccel/docker/index.md
-      reference/inaccel/monitor/command.md: reference/inaccel/monitor/index.md
 - search
 repo_url: https://github.com/inaccel
 site_author: InAccel
