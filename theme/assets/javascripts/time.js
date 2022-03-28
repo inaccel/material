@@ -23,5 +23,4 @@ function time() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', time);
-document.addEventListener('DOMContentSwitch', time);
+document$.subscribe(time);

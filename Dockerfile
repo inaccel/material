@@ -1,6 +1,4 @@
 ARG TAG
 FROM squidfunk/mkdocs-material:${TAG}
-
-ADD requirements.txt .
-
-RUN pip install -r requirements.txt
+RUN --mount=source=requirements.txt,target=requirements.txt \
+    pip install --no-cache-dir --requirement requirements.txt

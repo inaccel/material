@@ -1,9 +1,8 @@
-version: '3.7'
 services:
   docs.inaccel.com:
     build:
       args:
-        TAG: ${TAG:-latest}
+        TAG: ${TAG:-8.2.8}
       context: .
     ports:
     - 8000:8000

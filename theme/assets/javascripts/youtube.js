@@ -10,5 +10,4 @@ function youtube() {
   });
 }
 
-document.addEventListener('DOMContentLoaded', youtube);
-document.addEventListener('DOMContentSwitch', youtube);
+document$.subscribe(youtube);

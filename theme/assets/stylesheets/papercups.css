@@ -9,12 +9,12 @@
 }
 
 .Papercups-chatWindowContainer {
-  bottom: 135px !important;
+  bottom: 105px !important;
   height: calc(100% - 270px) !important;
   right: calc(6.05rem - 25px) !important;
 }
 
 .Papercups-toggleButtonContainer {
-  bottom: 75px !important;
+  bottom: 45px !important;
   right: calc(6.05rem - 25px) !important;
 }
