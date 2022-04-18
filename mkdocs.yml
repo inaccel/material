@@ -145,7 +145,7 @@ nav:
   - 'Tutorial labs':
     - 'Rolling your own Bitstream Repository': labs/bitstream-repository.md
     - 'Zero to FPGAs using BinderHub': labs/binderhub-aws.md
-    - 'Accelerate ML workflows on Katib': labs/katib.md
+    - 'Accelerated ML experiments on MicroK8s with InAccel FPGA Operator and Kubeflow Katib': https://ubuntu.com/tutorials/accelerated-ml-experiments-on-microk8s-with-inaccel-fpga-operator-and-kubeflow-katib
     - 'Build H2O models with the FPGA backend': labs/h2o.md
     - 'Using OpenShift for accelerated Data Analytics': labs/openshift-aws.md
     - 'Hybrid auto-scalable FPGA deployment': labs/auto-scaling-aws.md
