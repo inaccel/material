@@ -6,7 +6,7 @@ title: High-performance TensorFlow library for quantitative finance.
 
 *![time/embed](Estimated reading time: {X})*
 
-[![tensorflow](/img/tensorflow.png){: .center}](https://tensorflow.org)
+[![tensorflow](img/tensorflow.png){: .center}](https://tensorflow.org)
 
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/tf-quant-finance)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://pypi.org/project/inaccel-tf-quant-finance)

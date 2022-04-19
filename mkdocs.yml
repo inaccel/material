@@ -91,12 +91,8 @@ nav:
   - 'Develop with InAccel':
     - 'Overview': develop.md
     - 'Projects':
-      - 'Apache Spark':
-        - 'Run locally': project/spark/locally.md
-        - 'Run in a cluster': project/spark/in-a-cluster.md
-        - 'Machine Learning Examples': project/spark/ml-examples.md
-      - 'Jupyter Notebook': project/jupyter/lab.md
       - 'Keras': project/keras.md
+      - 'OpenSSL': project/openssl.md
       - 'scikit-learn': project/scikit-learn.md
       - 'TF Quant Finance': project/tf-quant-finance.md
       - 'XGBoost': project/xgboost.md

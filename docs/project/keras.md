@@ -6,7 +6,7 @@ title: Deep Learning for humans
 
 *![time/embed](Estimated reading time: {X})*
 
-[![keras](/img/keras.png){: .center}](https://keras.io)
+[![keras](img/keras.png){: .center}](https://keras.io)
 
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/keras)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://pypi.org/project/inaccel-keras)
@@ -26,7 +26,8 @@ Get the available accelerators for your platform.
 	> *xilinx xdma_201830.2*
 
 	```bash
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/xilinx/com/researchlabs/1.1/1resnet50
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/xilinx/com/researchlabs/1.0/2mobilenet
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/xilinx/com/researchlabs/1.2/1resnet50
 	```
 
 === "U280"
@@ -34,6 +35,8 @@ Get the available accelerators for your platform.
 	> *xilinx xdma_201920.3*
 
 	```bash
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u280/xdma_201920.3/xilinx/com/researchlabs/1.0/1resnet50
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u280/xdma_201920.3/xilinx/com/researchlabs/1.1/2mobilenet
 	```
 
 ## Examples

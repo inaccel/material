@@ -6,7 +6,7 @@ title: Scalable, Portable and Distributed Gradient Boosting
 
 *![time/embed](Estimated reading time: {X})*
 
-[![keras](/img/xgboost.png){: .center}](https://xgboost.ai)
+[![keras](img/xgboost.png){: .center}](https://xgboost.ai)
 
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/xgboost)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://test.pypi.org/project/inaccel-xgboost)
@@ -67,13 +67,13 @@ y_train = label.fit_transform(y_train)
 y_test = label.transform(y_test)
 
 params = {
-	'alpha': 0.0,
-	'eta': 0.3,
-	'max_depth': 10,
-	'num_class': len(label.classes_),
-	'objective': 'multi:softmax',
-	'subsample': 1.0,
-	'tree_method': 'fpga_exact'
+    'alpha': 0.0,
+    'eta': 0.3,
+    'max_depth': 10,
+    'num_class': len(label.classes_),
+    'objective': 'multi:softmax',
+    'subsample': 1.0,
+    'tree_method': 'fpga_exact'
 }
 
 dtrain = xgb.DMatrix(X_train, y_train)

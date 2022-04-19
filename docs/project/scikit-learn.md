@@ -6,7 +6,7 @@ title: Machine Learning in Python
 
 *![time/embed](Estimated reading time: {X})*
 
-[![scikit-learn](/img/scikit-learn.png){: .center}](https://scikit-learn.org)
+[![scikit-learn](img/scikit-learn.png){: .center}](https://scikit-learn.org)
 
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/scikit-learn)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://pypi.org/project/inaccel-scikit-learn)
