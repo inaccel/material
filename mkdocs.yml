@@ -72,8 +72,16 @@ markdown_extensions:
 nav:
 - 'Home': index.md
 - 'Guides':
-  - 'Get InAccel':
-    - 'Overview': overview.md
+  - 'InAccel overview': get-started/overview.md
+  - 'Get started':
+    - 'Part 1: Orientation': get-started/index.md
+    - 'Part 2: Setup the working environment': get-started/part2.md
+    - 'Part 3: Deploy your bitstreams': get-started/part3.md
+    - 'Part 4: Accelerate your app': get-started/part4.md
+  - 'Develop with InAccel':
+    - 'Overview': develop.md
+- 'Manuals':
+  - 'InAccel':
     - 'Install':
       - 'Linux platforms': install/linux.md
       - 'Debian': install/debian.md
@@ -82,24 +90,16 @@ nav:
       - 'InAccel repository': setup/repo.md
       - 'Dockerfile': setup/docker.md
       - 'Kubernetes': setup/kubernetes.md
-    - 'Release Notes': release-notes.md
-  - 'Get started':
-    - 'Part 1: Orientation': get-started/index.md
-    - 'Part 2: Setup the working environment': get-started/part2.md
-    - 'Part 3: Deploy your bitstreams': get-started/part3.md
-    - 'Part 4: Accelerate your app': get-started/part4.md
-  - 'Develop with InAccel':
-    - 'Overview': develop.md
-    - 'Projects':
-      - 'Keras': project/keras.md
-      - 'OpenSSL': project/openssl.md
-      - 'scikit-learn': project/scikit-learn.md
-      - 'TF Quant Finance': project/tf-quant-finance.md
-      - 'XGBoost': project/xgboost.md
+  - 'Open-source projects':
+    - 'Keras': project/keras.md
+    - 'OpenSSL': project/openssl.md
+    - 'scikit-learn': project/scikit-learn.md
+    - 'TF Quant Finance': project/tf-quant-finance.md
+    - 'XGBoost': project/xgboost.md
 - 'Reference':
   - 'File formats':
     - 'Bitstream file reference': reference/file-formats/bitstream.md
-  - 'Command line reference':
+  - 'Command-line reference':
     - 'InAccel CLI (inaccel)':
       - 'inaccel (base command)': reference/inaccel/index.md
       - 'inaccel bitstream *':
