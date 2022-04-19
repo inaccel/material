@@ -16,6 +16,7 @@ docker inaccel exec [OPTIONS] COMMAND [ARG...]
 | :--------------------- | :-----: | :------------------------------------------------------------------ |
 | ` --env, -e `          |         | Set environment variables                                           |
 | ` --index `            | ` 1 `   | Index of the container if there are multiple instances of a service |
+| ` --no-tty, -T `       |         | Disable pseudo-TTY allocation                                       |
 | ` --service, -s `      |         | Service name                                                        |
 | ` --user, -u `         |         | Username or UID (format: <name|uid>[:<group|gid>])                  |
 | ` --workdir, -w `      |         | Working directory inside the container                              |

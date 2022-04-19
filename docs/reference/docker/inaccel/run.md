@@ -17,6 +17,7 @@ docker inaccel run [OPTIONS] SERVICE [COMMAND] [ARG...]
 | ` --entrypoint `       |         | Override the entrypoint of the container           |
 | ` --env, -e `          |         | Set environment variables                          |
 | ` --no-deps `          |         | Don't start linked services                        |
+| ` --no-tty, -T `       |         | Disable pseudo-TTY allocation                      |
 | ` --publish, p `       |         | Publish a container's port(s) to the host          |
 | ` --user, -u `         |         | Username or UID (format: <name|uid>[:<group|gid>]) |
 | ` --volume, -v `       |         | Bind mount a volume                                |
