@@ -74,8 +74,8 @@ nav:
 - 'Guides':
   - 'InAccel overview': get-started/overview.md
   - 'Get started':
-    - 'Part 1: Orientation': get-started/index.md
-    - 'Part 2: Setup the working environment': get-started/part2.md
+    - 'Part 1: Orientation & Setup': get-started/index.md
+    - 'Part 2: Sample application': get-started/part2.md
     - 'Part 3: Deploy your bitstreams': get-started/part3.md
     - 'Part 4: Accelerate your app': get-started/part4.md
   - 'Develop with InAccel':

@@ -1,108 +1,419 @@
 *![time/embed](Estimated reading time: {X})*
 
-In this section, we thoroughly explain how to setup your working environment in
-order to run applications powered by InAccel Coral FPGA resource manager.
+Now that we have discussed about the main FPGA world concepts, let’s run a simple vector addition accelerated application. Depending on the deployed environment, we are going to either use Docker or Kubernetes instructions below:
 
-## Prerequisites
+=== "Docker"
+	**Step 1**
+	&nbsp;&nbsp;&nbsp;Install `docker-compose-plugin`:  
+	To run the sample application you will need to have installed the docker compose plugin. If docker compose is not installed in your system please follow the instructions below:
 
-1. **InAccel** (`inaccel`) package (*CLI* + *Container Runtime*) should be
-	installed in your system. If you have not already installed InAccel follow
-	the instructions provided here: [Debian](/install/debian) |
-	[RPM](/install/rpm).
+	=== "Apt"
+		```bash
+		sudo apt docker-compose-plugin
+		```
 
-	!!! info
+	=== "Yum"
+		```bash
+		sudo yum docker-compose-plugin
+		```
 
-		While InAccel CLI is not a true requirement, we strongly encourage the
-		usage of the CLI instead of directly tinkering with any associated
-		commands. Setting up Coral without InAcccel CLI and/or InAccel Container
-		Runtime is out of the scope of this tutorial.
+	**Step 2**
+	&nbsp;&nbsp;&nbsp;Create a `docker-compose.yml` file:
 
-2. [**Docker**](https://www.docker.com) (`docker`) installation that fully
-	supports custom runtimes is required for running Coral which is shipped as a
-	container image. If you are planning to use InAccel CLI only for bitstream
-	deployment (to any remote repository), then you can skip Docker package
-	installation in that machine.
+	The docker-compose file is basically comprised of two services: `inaccel-vadd` and `init` and a volume **shared** among the two services. Init runs first and downloads the right configuration file (bitstream) using` inaccel/cli` docker image and finally stores it in the shared volume. `inaccel-vadd`, that depends on `init` and uses `inaccel/vadd` image, is then able to invoke the accelerated vadd application.
 
-## Verify installation
+	=== "Intel PAC A10"
+		- *38d782e3b6125343b9342433e348ac4c*
 
-Before you proceed, ensure that you have successfully installed `inaccel` by
-running `inaccel --version`:
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/intel/pac_a10/38d782e3b6125343b9342433e348ac4c/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
 
-```text
-$ inaccel --version
-inaccel version 1.7.3
-```
+	=== "Xilinx AWS VU9P F1"
+		- **AWS** | *shell-v04261818_201920.2*
 
-If your terminal's output is similar or identical to the output above then you
-can assume that `inaccel` is properly installed and continue with generating
-your free license key.
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
 
-## Generate a license
+	=== "Xilinx U200"
+		- *xdma_201830.2*
 
-In order to launch Coral, you need a valid license key issued by InAccel. This
-can be easily achieved through the following steps:
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/u200/xdma_201830.2/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
 
-1. Follow [this](https://inaccel.com/license) link and complete the form to
-	make an inquiry for a free license. Then, click on button
-	*CREATE NEW LICENSE* and you will receive an email by InAccel containing the
-	**Community Edition** license key you requested.
+	=== "Xilinx U250"
+		- **Azure** | *gen3x16_xdma_shell_2.1*
 
-2. Retrieve the license key attached to your email and store it in your local
-	InAccel settings to use it every time you launch Coral (the *settings* file
-	can be found below the `~/.inaccel` directory). Simply issue the following
-	command:
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/gen3x16_xdma_shell_2.1/azure/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
 
-	```test
-	$ inaccel config license $CORAL_LICENSE_KEY
+		- *xdma_201830.2*
+
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
+
+	=== "Xilinx U280"
+		- *xdma_201920.3*
+
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/u280/xdma_201920.3/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
+
+	=== "Xilinx U50"
+		- *gen3x16_xdma_201920.3*
+
+			```yaml title="docker-compose.yml"
+			services:
+			  inaccel-vadd:
+			    depends_on:
+			      init:
+			        condition: service_completed_successfully
+			    image: inaccel/vadd
+			    volumes:
+			    - volume:/var/lib/inaccel
+			  init:
+			    command:
+			    - bitstream
+			    - install
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/u50/gen3x16_xdma_201920.3/vector/1/1addition
+			    image: inaccel/cli
+			    volumes:
+			    - volume:/var/lib/inaccel
+			volumes:
+			  volume:
+			    driver: inaccel
+			```
+	**Step 3**
+	&nbsp;&nbsp;&nbsp;Run vector addition example:
+
+	```bash
+	docker compose run inaccel-vadd
 	```
 
-## Launch InAccel Coral
+	**Step 4**
+	&nbsp;&nbsp;&nbsp;Clean environment:
 
-If you completed the above steps, then you are ready to launch Coral. To make
-things clear, Coral is not required to be launched neither at installation nor
-at bitstream deployment stage. Its functionality is to manage accelerators,
-hence you only need a running instance when your applications are running.
 
-Nevertheless, we suggest to launch Coral now to complete your environment setup.
-If you wish, feel free to skip this section and come back before moving to
-[Part 4](part4.md).
-
-!!! warning
-
-	If you are launching InAccel Coral for the first time make sure you restart
-	docker daemon service by issuing `systemctl docker restart` to enable
-	InAccel container runtime (`inaccel-runc`).
-
-1. Start Coral through its associated CLI command.
-
-	```text
-	$ inaccel coral start
-	Using InAccel Coral:
-	latest: Pulling from inaccel/coral
-	17282fad1a5e: Pull complete
-	bf958f2fb05c: Pull complete
-	533d34a577ec: Pull complete
-	fb3bea38d5b1: Pull complete
-	Digest: sha256:e17b9ded72b20e8719428e1060570bc2cd6cee9196dfb8a952d4f3b2fd43aa32
-	Status: Downloaded newer image for inaccel/coral:latest
-	docker.io/inaccel/coral:latest
+	Delete any containers or volumes created as well as `docker-compose.yml` file itself:
+	```bash
+	docker compose down --volumes
+	rm docker-compose.yml
 	```
 
-2. Verify Coral is successfully launched by issuing `inaccel coral console`.
+=== "Kubernetes"
+	**Step 1**
+	&nbsp;&nbsp;&nbsp;Create a `pod.yml` file:
 
-	```text
-	$ inaccel coral console
-	Welcome to
-	                          |
-	  __|   _      __|  _` |  |
-	 (     (   |  |    (   |  | community
-	 ___|  ___/  _|    __,_| _| version 2.0.0
-	                 by InAccel
+	To deploy FPGA accelerated applications to Kubernetes, we have to first of
+	all enable InAccel FPGA Operator. To do so, we use the
+	`inaccel/fpga: enabled` label. Apart from that, to target particular FPGA
+	types, we add a nodeSelector to our workload specification (e.g.
+	`intel/pac_a10: 38d782e3b6125343b9342433e348ac4c`). Additionally, we specify
+	a resource limit to configure workloads to consume FPGAs
+	(e.g. `intel/pac_a10: 1`). Finally, we are able to pre-fetch any required
+	bitstreams, using a simple annotation and the bitstreams' URL.
 
-	Use exit or Ctrl-D (i.e. EOF) to quit
-	coral>
+	=== "Intel PAC A10"
+		- *38d782e3b6125343b9342433e348ac4c*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/intel/pac_a10/38d782e3b6125343b9342433e348ac4c/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        intel/pac_a10: 1
+			  nodeSelector:
+			    intel/pac_a10: 38d782e3b6125343b9342433e348ac4c
+			  restartPolicy: Never
+			```
+
+	=== "Xilinx AWS VU9P F1"
+		- **AWS** | *shell-v04261818_201920.2*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/aws-vu9p-f1: 1
+			  nodeSelector:
+			    xilinx/aws-vu9p-f1: shell-v04261818_201920.2
+			  restartPolicy: Never
+			```
+
+	=== "Xilinx U200"
+		- *xdma_201830.2*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u200/xdma_201830.2/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/u200: 1
+			  nodeSelector:
+			    xilinx/u200: xdma_201830.2
+			  restartPolicy: Never
+			```
+
+	=== "Xilinx U250"
+		- **Azure** | *gen3x16_xdma_shell_2.1*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/gen3x16_xdma_shell_2.1/azure/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/u250: 1
+			  nodeSelector:
+			    xilinx/u250: gen3x16_xdma_shell_2.1
+			  restartPolicy: Never
+			```
+
+		- *xdma_201830.2*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u250/xdma_201830.2/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/u250: 1
+			  nodeSelector:
+			    xilinx/u250: xdma_201830.2
+			  restartPolicy: Never
+			```
+
+	=== "Xilinx U280"
+		- *xdma_201920.3*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u280/xdma_201920.3/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/u280: 1
+			  nodeSelector:
+			    xilinx/u280: xdma_201920.3
+			  restartPolicy: Never
+			```
+
+	=== "Xilinx U50"
+		- *gen3x16_xdma_201920.3*
+
+			```yaml title="pod.yml"
+			apiVersion: v1
+			kind: Pod
+			metadata:
+			  annotations:
+			    inaccel/cli: |
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/u50/gen3x16_xdma_201920.3/vector/1/1addition
+			  labels:
+			    inaccel/fpga: enabled
+			  name: inaccel-vadd
+			spec:
+			  containers:
+			  - image: inaccel/vadd
+			    name: inaccel-vadd
+			    resources:
+			      limits:
+			        xilinx/u50: 1
+			  nodeSelector:
+			    xilinx/u50: gen3x16_xdma_201920.3
+			  restartPolicy: Never
+			```
+
+	**Step 2**
+	&nbsp;&nbsp;&nbsp;Deploy `pod.yml` file and inspect the logs:
+	```bash
+	kubectl apply --filename pod.yml
+	kubectl wait --for condition=ready --timeout -1s pod/inaccel-vadd
+	kubectl logs --follow pod/inaccel-vadd
 	```
 
-Congratulations, you have successfully completed your InAccel environment setup.
-In [Part 3](part3.md), we get our hands dirty by demonstrating how to
-package and deploy your accelerators.
+	**Step 3**
+	&nbsp;&nbsp;&nbsp;Delete the pod created for the accelerated vadd application:
+	```bash
+	kubectl delete pod/inaccel-vadd
+	```
+
+## Recap
+
+In this short section, we learned how we can deploy a simple pre-compiled application targeting datacenter FPGAs through Docker or Kubernetes.  
+Next, we are going to package our own accelerator and write an application from scratch to cover all the scenarios of a cloud deployment targeting FPGA resources.

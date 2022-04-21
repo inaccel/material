@@ -15,31 +15,31 @@ running on Kubernetes.
 However, this awesome concept misses the ability of running applications in an
 accelerated environment. And this is where [**InAccel**](https://inaccel.com)
 comes in. InAccel, a world-leader in application acceleration through the use of
-adaptive acceleration platforms (ACAP, FPGA) provides an FPGA resource manager
+adaptive acceleration platforms (ACAP, FPGA) provides an FPGA operator
 that allows instant deployment, scaling and virtualization of FPGAs making the
-utilization of FPGA clusters easier than ever. InAccel's FPGA Kubernetes plugin
+utilization of FPGA clusters easier than ever. InAccel's FPGA Kubernetes device plugin
 enables users to accelerate their Pods within the snap of a finger. That said it
 really makes sense to combine all that together to provide seamless acceleration
 for any computational intensive workload.
 
 Supposedly having already deployed a Kubernetes cluster over a bunch of servers
-hosting FPGAs and having setup BinderHub you only need two steps to enable FPGA
-accelerated notebooks:
+hosting FPGAs and having setup BinderHub you only need to deploy InAccel FPGA
+Operator to enable FPGA accelerated notebooks:
 
-1. Create a kubernetes secret for the InAccel Resource Manager licensing system.
-	If you don't have a license key you can generate one for free
-	[here](https://inaccel.com/license). Just fill out the form and you will
-	automatically receive an e-mail with the license key requested.
+1. Deploy InAccel FPGA Operator:
 
 	```bash
-	kubectl create secret generic coral-license-key -n kube-system --from-literal=CORAL_LICENSE_KEY='<your license key>'
+	helm repo add inaccel https://setup.inaccel.com/helm
+	helm repo update
+	helm install my-fpga-operator inaccel/fpga-operator
 	```
 
-2. Deploy InAccel FPGA Kubernetes Plugin
-
-	```bash
-	kubectl apply -f https://bitbucket.org/inaccel/deploy/raw/master/inaccel-fpga-plugin.yml
-	```
+	!!! hint
+		If you want to run the enterprise edition of Coral or for example to specify the monitor port, you can do so by setting the corresponding values at the step of installing InAccel FPGA Operator. You can find a list of all the available parameters [here](https://artifacthub.io/packages/helm/inaccel/fpga-operator#parameters).
+		Example:
+		```bash
+		helm install my-fpga-operator inaccel/fpga-operator --set license=<your-license> --set monitor.port=<your-monitor-port>
+		```
 
 You can now run any FPGA accelerated application simply by specifying a Git repo in your BinderHub endpoint.
 
@@ -49,16 +49,13 @@ Amazon offers its so called [**EKS**](https://aws.amazon.com/eks) service for
 creating Kubernetes clusters. What is more,
 [**Amazon's F1**](https://aws.amazon.com/ec2/instance-types/f1) (FPGA) instances
 are supported by EKS meaning that a user can easily create a Kubernetes cluster
-of F1 instances and accelerate his applications using the power of FPGAs and
-that is why we are going to use it for this use case scenario.
+hosting F1 instances, to accelerate applications using the power of FPGAs and
+this is why we are using it in this tutorial.
 
 At this point we are going to guide you through the whole procedure of creating
 a Kubernetes cluster in Amazon AWS using EKS service and how to further on
-deploy BinderHub, [**InAccel FPGA Plugin**](/setup/kubernetes) and
-run an FPGA accelerated application. We suggest that you go over the following
-step by step guide but we also provide an alternative
-[**kickstart.sh script**](https://bitbucket.org/inaccel/deploy/raw/master/binderhub/kickstart.sh)
-script that you can use in case you prefer that.
+deploy BinderHub, [**InAccel FPGA Operator**](/setup/kubernetes) and
+run an FPGA accelerated application.
 
 Before beginning make sure you have the required access/premissions to perform
 the actions below using your AWS account. For this guide we used an account with
@@ -81,135 +78,135 @@ the following policies attached:
 	**Add permissions**. Select **Attach existing policies directly** and attach
 	the desired policies
 
-!!! info
-
-	You can also run the steps below using our
-	[**kickstart.sh script**](https://bitbucket.org/inaccel/deploy/raw/master/binderhub/kickstart.sh).
-
 1. Install `python3-pip`.
 
-	=== "Ubuntu"
+	=== "Apt"
 
 		```bash
 		sudo apt install -y python3-pip
 		```
 
-	=== "CentOS"
+	=== "Yum"
 
 		```bash
 		sudo yum install -y python3-pip
 		```
 
-2. Install `ansible`.
+2. Download and install `eksctl`.
 
 	```bash
-	sudo pip3 install ansible
-	```
-
-3. Download and install `eksctl`.
-
-	```bash
-	curl --silent --location "https://github.com/weaveworks/eksctl/releases/download/latest_release/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+	curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 	sudo mv /tmp/eksctl /usr/bin
 	```
 
-4. Install and configure `awscli`.
+3. Install and configure `awscli`.
 
 	```bash
 	sudo pip3 install --upgrade awscli
 	aws configure
 	```
 
-5. Download and install `aws-iam-authenticator`.
+4. Download and install `kubectl`.
 
 	```bash
-	sudo curl -o /usr/bin/aws-iam-authenticator https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/aws-iam-authenticator
-	sudo chmod +x /usr/bin/aws-iam-authenticator
-	```
-
-6. Download and install `kubectl`.
-
-	```bash
-	sudo curl -o /usr/bin/kubectl https://amazon-eks.s3-us-west-2.amazonaws.com/1.14.6/2019-08-22/bin/linux/amd64/kubectl
+	sudo curl -o /usr/bin/kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
 	sudo chmod +x /usr/bin/kubectl
 	```
 
-7. Create a folder named binderhub and get the following files:
+5. Setup [helm3](https://helm.sh/docs/intro/install/#from-script):  
 
 	```bash
-	mkdir binderhub && cd binderhub
-	curl -o eks-config-example.yaml https://bitbucket.org/inaccel/deploy/raw/master/binderhub/eks-config-example.yaml
-	curl -o config-fpga-nodes.yaml https://bitbucket.org/inaccel/deploy/raw/master/binderhub/config-fpga-nodes.yaml
-	curl -o get-k8s-nodes.sh https://bitbucket.org/inaccel/deploy/raw/master/binderhub/get-k8s-nodes.sh
+	curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+	chmod 700 get_helm.sh
+	./get_helm.sh
 	```
 
-8. Modify `eks-config-example.yaml` adding your ***publicKey***.
+6. Create a Kubernetes Cluster in AWS:
 
-	!!! info
-
-		You can also modify any other option available.
-
-	!!! hint
-
-		In case you do not have a key pair please create one using Amazon EC2
-		service.
-
-9. Create an Amazon EKS cluster using the `eks-config-example.yaml` provided.
+	At this ponint we create a Kubernetes cluster in AWS named `binderhub` that
+	will by default spawn two worker nodes with the eks default values.
 
 	```bash
-	eksctl create cluster -f eks-config-example.yaml
+	eksctl create cluster \
+		--asg-access \
+		--name binderhub \
+		--nodegroup-name default \
+		--region us-east-1 \
+		--version 1.22 \
+		--zones us-east-1a,us-east-1b,us-east-1c
 	```
 
-10. Get the external IPs of the worker nodes (we will need them to configure the
-	nodes using ansible). To do so just run `get-k8s-nodes.sh` script. A file
-	named `ansible-inventory` will be generated in the same folder.
+7. Create an auto-scaling group of **F1 instances**:
+
+	We set the minimum number of this nodegroup's nodes to zero (0) since we
+	don't want to be charged for the FPGA instances unless a pod is requesting
+	FPGA resources. In such case, an FPGA (F1) node will be automatically
+	spawned and provisioned to handle this acceleration request. To enable this
+	functionality we also have to deploy cluster autoscaler (next step).
 
 	```bash
-	chmod +x get-k8s-nodes.sh && ./get-k8s-nodes.sh
+	eksctl create nodegroup \
+		--asg-access \
+		--cluster binderhub \
+		--managed=false \
+		--name f1-2xlarge \
+		--node-labels inaccel/fpga=enabled \
+		--node-type f1.2xlarge \
+		--nodes 0 \
+		--nodes-max 3 \
+		--nodes-min 0 \
+		--tags k8s.io/cluster-autoscaler/enabled=true \
+		--tags k8s.io/cluster-autoscaler/binderhub=owned \
+		--tags k8s.io/cluster-autoscaler/node-template/label/node.kubernetes.io/instance-type=f1.2xlarge \
+		--tags k8s.io/cluster-autoscaler/node-template/resources/xilinx/aws-vu9p-f1=1
 	```
 
-11. Execute the ansible command to configure all the worker nodes given the
-	inventory you just created and specifying your ***private key***.
+8. Deploy Kubernetes cluser-autoscaler:
+
+	We make sure that the cluster autoscaler points to the correct Kubernetes
+	cluster by specifying the `autoDiscovery.clusterName` and `awsRegion`
+	properties.
 
 	```bash
-	ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook --private-key=<privateKey> -i ansible-inventory config-fpga-nodes.yaml -u ec2-user -b
+	helm repo add cluster-autoscaler https://kubernetes.github.io/autoscaler
+	helm repo update
+	helm install cluster-autoscaler cluster-autoscaler/cluster-autoscaler \
+	    --set autoDiscovery.clusterName=binderhub \
+	    --set awsRegion=us-east-1
 	```
 
-12. Install `helm` and `tiller`.
+9. Prepare the binderhub deployment:
 
-	```bash
-	curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash
-	kubectl --namespace kube-system create serviceaccount tiller
-	kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
-	```
+ 	To deploy Binderhub we have to first create a yaml file that will host all
+	the required configurations. For example, we specify that the pods to be
+	spawned by BinderHub, should be labeled as `inaccel/fpga: "enabled"` and
+	should request exactly one `xilinx/aws-vu9p-f1` FPGA resource.
 
-13. Init `helm` and `tiller`.
+	Make sure you replace `docker-id`, `organization-name`, `prefix` and
+	`password` with your own values.
 
-	```bash
-	helm init --service-account tiller --wait
-	kubectl patch deployment tiller-deploy --namespace=kube-system --type=json --patch='[{"op": "add", "path": "/spec/template/spec/containers/0/command", "value": ["/tiller", "--listen=localhost:44134"]}]'
-	helm version
-	```
+	```yaml title="config.yaml"
+	config:
+	  BinderHub:
+	    use_registry: true
+	    image_prefix: <docker-id OR organization-name>/<prefix>-
 
-14. Generate two tokens that will be used in the next step.
+	dind:
+	 enabled: true
 
-	```bash
-	openssl rand -hex 32
-	openssl rand -hex 32
-	```
-
-15. Create a `secret.yaml` file with the following structure:
-
-	```yaml
 	jupyterhub:
-	  hub:
-	    services:
-	      binder:
-	        apiToken: "1st token goes here"
-	  proxy:
-	      secretToken: "2nd token goes here"
+	  singleuser:
+	    profileList:
+	      - display_name: "FPGA Server"
+	        description: "Spawns a notebook server with access to an FPGA"
+	        kubespawner_override:
+	          extra_labels:
+	            inaccel/fpga: "enabled"
+	          extra_resource_limits:
+	            xilinx/aws-vu9p-f1: "1"
+
 	registry:
-	  username: <username>
+	  username: <docker-id>
 	  password: <password>
 	```
 
@@ -219,30 +216,18 @@ the following policies attached:
 		BinderHub to a different docker registry please consider
 		[BinderHub documentation](https://binderhub.readthedocs.io)
 
-16. Fill the `secret.yaml` skeleton with the tokens generated and your DockerHub
-	credentials.
+10. Install BinderHub.
 
-17. Create a `config.yaml` file with the following structure. Replace
-	`docker-id` with your DockerHub account or with your organization's id.
-
-	```yaml
-	config:
-	  BinderHub:
-	    use_registry: true
-	    image_prefix: <docker-id>/<prefix>-
-	```
-
-18. Install BinderHub. You can modify the `--version` argument as you see fit.
-	You can find a list of all the available versions
-	[here](https://jupyterhub.github.io/helm-chart/#development-releases-binderhub).
+	You can modify the `--version` argument as you see fit. You can find a list
+	of all the available versions [here](https://jupyterhub.github.io/helm-chart/#development-releases-binderhub).
 
 	```bash
 	helm repo add jupyterhub https://jupyterhub.github.io/helm-chart
 	helm repo update
-	helm install jupyterhub/binderhub --version=0.2.0-028.9ba1fc3 --name=binder --namespace=binder -f secret.yaml -f config.yaml
+	helm install binder jupyterhub/binderhub --version=0.2.0-n905.h3d3e24e --namespace=binder -f config.yaml --create-namespace
 	```
 
-19. Connect BinderHub and JupyterHub.
+11. Connect BinderHub and JupyterHub.
 
 	```bash
 	kubectl --namespace=binder get svc proxy-public | awk 'NR>1 {print $4}'
@@ -253,37 +238,59 @@ the following policies attached:
 		If the above command returns `<pending>` just wait a few moments and
 		execute it again.
 
-20. Copy the output of the above command and modify `config.yaml` file adding
+	Copy the output of the above command and edit `config.yaml` file adding
 	the following:
 
-	```yaml
+	```yaml title="config.yaml"
 	config:
 	  BinderHub:
 	    hub_url: http://<output of the above command>
 	```
 
-21. Update Binder beployment. If you chose a different version when installing
-	BinderHub make sure you set the same version here:
+	The whole `config.yaml` file should look like this:
 
-	```bash
-	helm upgrade binder jupyterhub/binderhub --version=0.2.0-028.9ba1fc3 -f secret.yaml -f config.yaml
+	```yaml title="config.yaml"
+	config:
+	  BinderHub:
+	    use_registry: true
+	    image_prefix: <docker-id OR organization-name>/<prefix>-
+	    hub_url: http://<output-of-the-above-command>
+
+	dind:
+	 enabled: true
+
+	jupyterhub:
+	  singleuser:
+	    profileList:
+	      - display_name: "FPGA Server"
+	        description: "Spawns a notebook server with access to an FPGA"
+	        kubespawner_override:
+	          extra_labels:
+	            inaccel/fpga: "enabled"
+	          extra_resource_limits:
+	            xilinx/aws-vu9p-f1: "1"
+
+	registry:
+	  username: <docker-id>
+	  password: <password>
 	```
 
-22. Create a secret for the InAccel Resource Manager licensing system. Make sure
-	to enter your license key. If you don't have a license key you can generate
-	one for free [here](https://inaccel.com/license).
+12. Update Binder beployment. If you chose a different `version` when installing
+	BinderHub make sure you set the same one here:
 
 	```bash
-	kubectl create secret generic coral-license-key -n kube-system --from-literal=CORAL_LICENSE_KEY='<your license key>'
+	helm upgrade binder jupyterhub/binderhub --version=0.2.0-n905.h3d3e24e --namespace=binder -f config.yaml
 	```
 
-23. Deploy InAccel FPGA Kubernetes Plugin:
+14. Deploy InAccel FPGA Operator:
 
 	```bash
-	kubectl apply -f https://bitbucket.org/inaccel/deploy/raw/master/inaccel-fpga-plugin.yml
+	helm repo add inaccel https://setup.inaccel.com/helm
+	helm repo update
+	helm install inaccel-fpga-operator inaccel/fpga-operator
 	```
 
-24. You are all set! Get BinderHub endpoint and paste it in a web browser.
+15. You are all set! Get BinderHub endpoint and paste it in a web browser.
 
 	```bash
 	kubectl --namespace=binder get svc binder
@@ -301,16 +308,15 @@ jupyter notebooks that invoke the accelerators and can be instantly spawned
 using BinderHub. We have modified the Vitis software libraries to use our
 framework's API and have implemented the corresponding notebooks.
 
-1. In the BinderHub endpoint you setup previously select **Git repository** from
-	the drop down list and then paste the following URL:
+1. In the BinderHub endpoint you setup previously, paste the following URL and
+then hit **Launch**:
 
 	```bash
-	https://bitbucket.org/inaccel/vitis-notebooks
+	https://github.com/inaccel/Vitis_Notebooks
 	```
 
-	On the **Git branch** field write `aws` and click **Launch**. You should now
-	see the docker image being built and after a while a Jupyter Notebook will
-	automatically pop up.
+	You should then see a docker image being built and after a while you should
+	be reirected to a fully working Jupyter Notebook environment.
 
 	![picture](/img/binder.png){: .center}
 

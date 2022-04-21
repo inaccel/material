@@ -14,14 +14,12 @@ artifacts and how to encrypt and deploy them to a local or a remote repository.
 ## Bitstream Development (Optional)
 
 In this section, we provide the "Hello World" accelerator example for bitstream
-development comprised of a simple vector addition and subtraction. To elucidate,
-the first kernel receives as input two float arrays and adds their respective
-elements in an output array. The second kernel performs a similar operation
-where instead of addition, an element-wise subtraction operation is performed.
+development comprised of a simple vector addition kernel. It receives as input
+ two float arrays and adds their respective elements in an output array.
 
-Since those kernels are considered trivial, we will not include the
+Since the kernel is considered trivial, we will not include the
 implementation in this tutorial. However you can download the source code from
-our [GitHub repository](https://github.com/inaccel/aws-demo).
+our [GitHub repository](https://github.com/inaccel/vadd).
 
 ### Build instructions for AWS
 
@@ -31,15 +29,16 @@ our [GitHub repository](https://github.com/inaccel/aws-demo).
 2. Install the AWS FPGA development toolkit.
 
 	```bash
-	git clone https://github.com/aws/aws-fpga.git
-	source aws-fpga/sdaccel_setup.sh
+	git clone https://github.com/aws/aws-fpga.git -b v1.4.22
+	source aws-fpga/vitis_setup.sh
 	```
 
 3. Clone our demo repository and compile the included FPGA kernels.
 
 	```bash
-	git clone https://github.com/inaccel/aws-demo.git
-	make -C aws-demo/device binary/demo.xclbin
+	git clone https://github.com/inaccel/vadd.git
+	v++ vadd/src/vadd.cl --platform ${AWS_PLATFORM} -o vadd.hw.xo
+	v++ --link vadd.hw.xo --platform ${AWS_PLATFORM} -o vadd.hw.xclbin
 	```
 
 	!!! warning
@@ -47,23 +46,30 @@ our [GitHub repository](https://github.com/inaccel/aws-demo).
 		FPGA binary compilation is a very slow process. You can still skip this
 		part and use our prebuild FPGA binary.
 
-3. Create an Amazon FPGA Image (AFI).
+4. Configure AWS CLI with your credentials
+ 	```bash
+	aws configure
+	```
+
+5. Create an Amazon FPGA Image (AFI).
+
+	Make sure you specify your **S3 bucket** for the generation of the AFI.
 
 	```bash
-	${SDACCEL_DIR}/tools/create_sdaccel_afi.sh -xclbin=aws-demo/device/binary/demo.xclbin -o=aws-demo/device/binary/demo -s3_bucket=inaccel -s3_dcp_key=demo_dcp -s3_logs_key=demo_logs
+	${VITIS_DIR}/tools/create_vitis_afi.sh -xclbin=vadd.hw.xclbin -o=vadd -s3_bucket=<your-aws-bucket> -s3_dcp_key=demo_dcp -s3_logs_key=demo_logs
 	```
 
 For more details on the full AWS F1 development lifecycle please refer to this
-SDAccel
-[Quick Start Guide](https://github.com/aws/aws-fpga/tree/master/SDAccel).
+Vitis
+[Quick Start Guide](https://github.com/aws/aws-fpga/tree/master/Vitis).
 
 ## Bitstream Packaging
 
 We assume that you have already implemented and compiled a simple bitstream
-comprised of the two kernels mentioned above. In case you didn't complete
+comprised of the kernel mentioned above. In case you didn't complete
 the above [steps](#build-instructions-for-aws) for AWS, you can still download
-the prebuilt bitstream binary (`demo.awsxclbin`) from
-[InAccel Store](https://store.inaccel.com/artifactory/webapp/#/artifacts/browse/tree/General/bitstreams/xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/inaccel/math/vector/0.1/2addition_2subtraction).
+the prebuilt bitstream binary (`vadd.awsxclbin`) from
+[InAccel Store](https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition).
 
 At this point, we are ready to move on to the next stage and describe our
 generated bistream, creating the specification file (`bitstream.json` or
@@ -72,161 +78,56 @@ generated bistream, creating the specification file (`bitstream.json` or
 ### Describe your FPGA binary
 
 As mentioned before, each bitstream artifact contains a descriptive JSON (or
-XML) file that defines all the details required to thoroughly describe the
-compiled bitstream. These information include target platform, bitstream
-kernels, version and other metadata.
+XML) file that defines all the details required to thoroughly describe a
+compiled bitstream, like the target platform, the bitstream
+kernels, the version and other metadata.
 
 Below we present a verbose, yet simple `bitstream.json` file for our bitstream:
 
 ```json
 {
-	"name": "demo.awsxclbin",
-	"bitstreamId": "com.inaccel.math.vector",
-	"version": "0.1",
-	"description": "vector operations",
+	"name": "vadd.awsxclbin",
+	"bitstreamId": "vector",
+	"version": "1",
+	"description": "https://github.com/inaccel/vadd",
 	"platform": {
 		"vendor": "xilinx",
-		"name": "aws-vu9p-f1-04261818",
-		"version": "dynamic_5.0"
+		"name": "aws-vu9p-f1",
+		"version": "shell-v04261818_201920.2",
+		"label": [
+			"aws"
+		]
 	},
 	"kernels": [
 		{
 			"name": [
-				"vsub_kernel:{vsub_kernel_1}"
-			],
-			"kernelId": "subtraction",
-			"arguments": [
-				{
-					"type": "float16*",
-					"name": "input1",
-					"memory": [
-						"2"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "input2",
-					"memory": [
-						"2"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "output",
-					"memory": [
-						"2"
-					],
-					"access": "w"
-				},
-				{
-					"type": "int",
-					"name": "size"
-				}
-			]
-		},
-		{
-			"name": [
-				"vsub_kernel:{vsub_kernel_2}"
-			],
-			"kernelId": "subtraction",
-			"arguments": [
-				{
-					"type": "float16*",
-					"name": "input1",
-					"memory": [
-						"3"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "input2",
-					"memory": [
-						"3"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "output",
-					"memory": [
-						"3"
-					],
-					"access": "w"
-				},
-				{
-					"type": "int",
-					"name": "size"
-				}
-			]
-		},
-		{
-			"name": [
-				"vadd_kernel:{vadd_kernel_1}"
+				"vadd"
 			],
 			"kernelId": "addition",
 			"arguments": [
 				{
-					"type": "float16*",
-					"name": "input1",
+					"type": "float*",
+					"name": "a",
 					"memory": [
 						"0"
 					],
 					"access": "r"
 				},
 				{
-					"type": "float16*",
-					"name": "input2",
+					"type": "float*",
+					"name": "b",
 					"memory": [
 						"0"
 					],
 					"access": "r"
 				},
 				{
-					"type": "float16*",
-					"name": "output",
+					"type": "float*",
+					"name": "c",
 					"memory": [
 						"0"
 					],
 					"access": "w"
-				},
-				{
-					"type": "int",
-					"name": "size"
-				}
-			]
-		},
-		{
-			"name": [
-				"vadd_kernel:{vadd_kernel_2}"
-			],
-			"kernelId": "addition",
-			"arguments": [
-				{
-					"type": "float16*",
-					"name": "input1",
-					"memory": [
-						"1"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "input2",
-					"memory": [
-						"1"
-					],
-					"access": "r"
-				},
-				{
-					"type": "float16*",
-					"name": "output",
-					"memory": [
-						"1"
-					],
-					"access": "r"
 				},
 				{
 					"type": "int",
@@ -239,7 +140,7 @@ Below we present a verbose, yet simple `bitstream.json` file for our bitstream:
 ```
 
 As you can notice, we designed bitstream specification file to contain fields
-which are self-descriptive to reduce the documentation lookup overhead. However,
+which are self-descriptive in order to reduce the documentation lookup overhead. However,
 we will make a brief description for most of the fields with the risk of being
 redundant, to make you comfortable on creating your own.
 
@@ -303,8 +204,8 @@ issuing the command below.
 
 ```text
 $ inaccel bitstream list
-CHECKSUM        BITSTREAM ID               VERSION    KERNEL IDS                PLATFORM
-25f737db86a3    com.inaccel.math.vector    0.1        [addition subtraction]    aws-vu9p-f1-04261818 (xilinx dynamic_5.0)
+CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
+da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
 ```
 
 If the output of the command matches the one presented above then you have
@@ -319,11 +220,10 @@ bitstream along with their
 simply have to list them using your bitstream's `checksum` value:
 
 ```text
-$ inaccel bitstream list 25f737db86a3
-PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/inaccel/math/vector/0.1/2addition_2subtraction
-DESCRIPTION     vector operations
-ACCELERATORS    2 x com.inaccel.math.vector.addition (float16* input1, float16* input2, float16* output, int size)
-                2 x com.inaccel.math.vector.subtraction (float16* input1, float16* input2, float16* output, int size)
+$ inaccel bitstream list da24cad466c6
+PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+DESCRIPTION     https://github.com/inaccel/vadd
+ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 ```
 
 ### Remote deployment (Optional)
@@ -376,8 +276,8 @@ running:
 
 ```text
 $ inaccel bitstream list --repository demo-repo
-CHECKSUM        BITSTREAM ID               VERSION    KERNEL IDS                PLATFORM
-25f737db86a3    com.inaccel.math.vector    0.1        [addition subtraction]    aws-vu9p-f1-04261818 (xilinx dynamic_5.0)
+CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
+da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
 ```
 
 Assuming you are presented with a similar output you are ready to start
@@ -386,14 +286,14 @@ leveraging your accelerators in your applications.
 ## Bitstream Resolution
 
 InAccel offers a fully-fledged bitstream repository with various bitstreams
-available according to whether you own a Community Edition (CE) or an Enterprise
-Edition (EE) license.
+available according to whether you are running on Community Edition (CE) or Enterprise
+Edition (EE) of InAccel Coral.
 
-For this tutorial we need to resolve the `demo` bitstream that contains the
-kernels we will need for our application.
+For this tutorial we resolve `vadd` bitstream which contains the addition
+kernel needed for our application.
 
 ```bash
-inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/inaccel/math/vector/0.1/2addition_2subtraction
+inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
 ```
 
 Finally, you can explore the available bitstreams on our repository, or host
@@ -410,22 +310,20 @@ description and available accelerators:
 
 ```text
 $ inaccel bitstream list
-CHECKSUM        BITSTREAM ID               VERSION    KERNEL IDS                PLATFORM
-25f737db86a3    com.inaccel.math.vector    0.1        [addition subtraction]    aws-vu9p-f1-04261818 (xilinx dynamic_5.0)
+CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
+da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
 ```
 
 From the above output, we notice that our repository contains one deployed
-bitstream with two accelerators suitable for our goals (i.e *addition* and
-*subtraction*). Our next step is to inspect the bitstream of interest to list
+bitstream with one accelerator suitable for our goals (i.e *addition*). Our next step is to inspect the bitstream of interest to list
 its available accelerators as function prototypes to get a notion of how to
 invoke them on our application. We simply issue the following command:
 
 ```text
-$ inaccel bitstream list 25f737db86a3
-PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1-04261818/dynamic_5.0/com/inaccel/math/vector/0.1/2addition_2subtraction
-DESCRIPTION     vector operations
-ACCELERATORS    2 x com.inaccel.math.vector.addition (float16* input1, float16* input2, float16* output, int size)
-                2 x com.inaccel.math.vector.subtraction (float16* input1, float16* input2, float16* output, int size)
+$ inaccel bitstream list da24cad466c6
+PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+DESCRIPTION     https://github.com/inaccel/vadd
+ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 ```
 
 That's it! You are now ready to move to

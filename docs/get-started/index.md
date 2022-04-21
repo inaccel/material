@@ -1,17 +1,35 @@
 *![time/embed](Estimated reading time: {X})*
 
+Welcome! We are excited that you want to learn InAccel.
+
 Through this tutorial, we will guide you step-by-step on how to leverage InAccel
 toolset to ship and run your accelerator workloads in a simple, straightforward
-and efficient manner. This tutorial summarizes lots of concepts which are
-extensively documented elsewhere, so feel free to follow the links provided to
-extract the most value out of our products.
+and efficient manner.
 
-This *Getting Started* tutorial consists of the following **four** parts:
+You will mainly learn how to:
+
+1. Deploy a simple FPGA accelerated application
+2. Develop your own FPGA accelerated application
+	- Deploy your bitstreams
+	- Accelerate your app
+	- Deploy your app (Host/Docker/Kubernetes)
+
+## Download and Install InAccel
+
+This tutorial assumes that you have already installed InAccel. If you don't have InAccel FPGA Operator installed, choose your preferred deployment environment to download and setup InAccel.
+
+[:material-docker: Docker](/install/linux){ .md-button } [:material-kubernetes: Kubernetes](https://artifacthub.io/packages/helm/inaccel/fpga-operator){ .md-button }
+
+## Start the Tutorial
+<!-- After having successfully installed InAccel toolset, you are ready to run the hello-world example of FPGA world, a simple vector addition application. -->
+
+
+<!-- This *Getting Started* tutorial consists of the following **four** parts:
 
 1. Orientation
 2. [Setup the working environment](part2.md)
 3. [Deploy your bitstreams](part3.md)
-4. [Accelerate your app](part4.md)
+4. [Accelerate your app](part4.md) -->
 
 Prior to the hands-on tutorial describing the exact steps on how to get started,
 we consider valuable to provide some motivation behind the necessity of an
@@ -130,6 +148,6 @@ compromising flexibility.
 * Encompass bitstream management and protection capabilities.
 
 Since we briefly covered the necessity of a universal FPGA resource manager as
-well as InAccel's approach on the issue, continue to [Part 2](part2.md) to setup
-your environment. You can find more information on Coral integrations and
+well as InAccel's approach on the issue, continue to [Part 2](part2.md) to run a
+sample application. You can find more information on Coral integrations and
 features [here](https://inaccel.com/coral-fpga-resource-manager).
