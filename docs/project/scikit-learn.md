@@ -23,13 +23,13 @@ Get the available accelerators for your platform.
 
 === "AWS-VU9P-F1"
 
-	> *xilinx dynamic_5.0*
+	> *xilinx dynamic-shell*
 
 	```bash
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/ml/KMeans/1.0/4Centroids
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/ml/KMeans/1.0/4Centroids1
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/ml/LogisticRegression/1.0/4Gradients
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/ml/NaiveBayes/1.0/4Classifier
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/com/inaccel/ml/KMeans/1.0/4Centroids
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/com/inaccel/ml/KMeans/1.0/4Centroids1
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/com/inaccel/ml/LogisticRegression/1.0/4Gradients
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/com/inaccel/ml/NaiveBayes/1.0/4Classifier
 	```
 
 === "PAC_A10"

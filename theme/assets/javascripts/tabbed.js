@@ -64,5 +64,4 @@ function tabbed() {
   }, false);
 }
 
-document.addEventListener('DOMContentLoaded', tabbed);
-document.addEventListener('DOMContentSwitch', tabbed);
+document$.subscribe(tabbed);

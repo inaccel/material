@@ -63,7 +63,7 @@ Now that we have discussed about the main FPGA world concepts, let’s run a sim
 			    command:
 			    - bitstream
 			    - install
-			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+			    - https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 			    image: inaccel/cli
 			    volumes:
 			    - volume:/var/lib/inaccel
@@ -259,7 +259,7 @@ Now that we have discussed about the main FPGA world concepts, let’s run a sim
 			metadata:
 			  annotations:
 			    inaccel/cli: |
-			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+			      bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 			  labels:
 			    inaccel/fpga: enabled
 			  name: inaccel-vadd
@@ -271,7 +271,7 @@ Now that we have discussed about the main FPGA world concepts, let’s run a sim
 			      limits:
 			        xilinx/aws-vu9p-f1: 1
 			  nodeSelector:
-			    xilinx/aws-vu9p-f1: shell-v04261818_201920.2
+			    xilinx/aws-vu9p-f1: dynamic-shell
 			  restartPolicy: Never
 			```
 

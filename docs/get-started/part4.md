@@ -93,10 +93,10 @@ let's break it up into pieces and analyze them to gain a holistic understanding.
 
 	For the sake of completeness, we present again the portion showing the function
 	prototype of the available accelerator printed by
-	`inaccel bitstream list da24cad466c6` command:
+	`inaccel bitstream list 2c480f9424d4` command:
 
 	```text
-	PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+	PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 	DESCRIPTION     https://github.com/inaccel/vadd
 	ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 	```
@@ -199,10 +199,10 @@ let's break it up into pieces and analyze them to gain a holistic understanding.
 
 	For the sake of completeness, we present again the portion showing the function
 	prototype of the available accelerator printed by
-	`inaccel bitstream list da24cad466c6` command:
+	`inaccel bitstream list 2c480f9424d4` command:
 
 	```text
-	PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+	PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 	DESCRIPTION     https://github.com/inaccel/vadd
 	ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 	```

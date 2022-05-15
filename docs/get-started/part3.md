@@ -69,7 +69,7 @@ We assume that you have already implemented and compiled a simple bitstream
 comprised of the kernel mentioned above. In case you didn't complete
 the above [steps](#build-instructions-for-aws) for AWS, you can still download
 the prebuilt bitstream binary (`vadd.awsxclbin`) from
-[InAccel Store](https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition).
+[InAccel Store](https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition).
 
 At this point, we are ready to move on to the next stage and describe our
 generated bistream, creating the specification file (`bitstream.json` or
@@ -205,7 +205,7 @@ issuing the command below.
 ```text
 $ inaccel bitstream list
 CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
-da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
+2c480f9424d4    vector          1          [addition]    aws-vu9p-f1 (xilinx dynamic-shell)
 ```
 
 If the output of the command matches the one presented above then you have
@@ -220,8 +220,8 @@ bitstream along with their
 simply have to list them using your bitstream's `checksum` value:
 
 ```text
-$ inaccel bitstream list da24cad466c6
-PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+$ inaccel bitstream list 2c480f9424d4
+PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 DESCRIPTION     https://github.com/inaccel/vadd
 ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 ```
@@ -277,7 +277,7 @@ running:
 ```text
 $ inaccel bitstream list --repository demo-repo
 CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
-da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
+2c480f9424d4    vector          1          [addition]    aws-vu9p-f1 (xilinx dynamic-shell)
 ```
 
 Assuming you are presented with a similar output you are ready to start
@@ -293,7 +293,7 @@ For this tutorial we resolve `vadd` bitstream which contains the addition
 kernel needed for our application.
 
 ```bash
-inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 ```
 
 Finally, you can explore the available bitstreams on our repository, or host
@@ -311,7 +311,7 @@ description and available accelerators:
 ```text
 $ inaccel bitstream list
 CHECKSUM        BITSTREAM ID    VERSION    KERNEL IDS    PLATFORM
-da24cad466c6    vector          1          [addition]    aws-vu9p-f1 (xilinx shell-v04261818_201920.2)
+2c480f9424d4    vector          1          [addition]    aws-vu9p-f1 (xilinx dynamic-shell)
 ```
 
 From the above output, we notice that our repository contains one deployed
@@ -320,8 +320,8 @@ its available accelerators as function prototypes to get a notion of how to
 invoke them on our application. We simply issue the following command:
 
 ```text
-$ inaccel bitstream list da24cad466c6
-PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/vector/1/1addition
+$ inaccel bitstream list 2c480f9424d4
+PATH            /var/lib/inaccel/repository/.../xilinx/aws-vu9p-f1/dynamic-shell/aws/vector/1/1addition
 DESCRIPTION     https://github.com/inaccel/vadd
 ACCELERATORS    1 x vector.addition (float* a, float* b, float* c, int size)
 ```

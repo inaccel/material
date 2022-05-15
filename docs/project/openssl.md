@@ -30,10 +30,10 @@ Get the available accelerators for your platform.
 
 === "AWS VU9P F1"
 
-	> *xilinx shell-v04261818_201920.2*
+	> *xilinx dynamic-shell*
 
 	```bash
-	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/shell-v04261818_201920.2/aws/openssl/crypto/aes/1.0.2/4cbc-decrypt_4cfb128-decrypt_4ctr128-crypt
+	inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/openssl/crypto/aes/1.0.2/4cbc-decrypt_4cfb128-decrypt_4ctr128-crypt
 	```
 
 === "U200"

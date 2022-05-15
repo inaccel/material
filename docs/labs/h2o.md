@@ -72,7 +72,7 @@ machine learning example inside a common Jupyter Notebook.
 === "AWS-VU9P-F1"
 
 	```python
-	!inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic_5.0/com/inaccel/xgboost/0.1/2exact
+	!inaccel bitstream install https://store.inaccel.com/artifactory/bitstreams/xilinx/aws-vu9p-f1/dynamic-shell/aws/com/inaccel/xgboost/0.1/2exact
 	```
 
 === "U250"
