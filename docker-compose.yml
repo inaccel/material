@@ -2,7 +2,7 @@ services:
   docs.inaccel.com:
     build:
       args:
-        TAG: ${TAG:-8.2.8}
+        TAG: ${TAG:-8.5.3}
       context: .
     ports:
     - 8000:8000

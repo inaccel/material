@@ -7,12 +7,15 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     container:
-      image: squidfunk/mkdocs-material:8.2.8
+      image: squidfunk/mkdocs-material:8.5.3
     steps:
     - name: Checkout
       uses: actions/checkout@v2
       with:
         fetch-depth: 0
+    - name: Fix ownership
+      run: |
+        chown -R $(id -u):$(id -g) ${PWD}
     - name: Install requirements
       run: pip install -r requirements.txt
     - name: Build
