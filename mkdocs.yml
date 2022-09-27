@@ -164,6 +164,7 @@ site_url: https://docs.inaccel.com/
 theme:
   custom_dir: theme
   features:
+  - announce.dismiss
   - content.code.annotate
   - navigation.instant
   - navigation.tabs
@@ -172,9 +173,24 @@ theme:
   - search.highlight
   - search.share
   - search.suggest
+  - toc.follow
   font:
     code: Roboto Mono
     text: Open Sans
+  icon:
+    admonition:
+      abstract: octicons/checklist-16
+      bug: octicons/bug-16
+      danger: octicons/zap-16
+      example: octicons/beaker-16
+      failure: octicons/x-circle-16
+      info: octicons/info-16
+      note: octicons/tag-16
+      question: octicons/question-16
+      quote: octicons/quote-16
+      success: octicons/check-16
+      tip: octicons/squirrel-16
+      warning: octicons/alert-16
   logo: assets/images/inaccel-docs-logo.svg
   name: material
   palette:
