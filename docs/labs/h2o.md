@@ -49,8 +49,8 @@ This section will walk you through the installation of InAccel + H2O.
 accelerated applications. InAccel enables you to separate your applications
 from your accelerators so you can deliver high-performance software quickly.
 
-You can setup InAccel toolset on any [Linux platform](/install/linux) and enable
-FPGA accelerator orchestration with a free license issued by InAccel, using this
+You can setup InAccel toolset on any [Linux platform](/install) and enable FPGA
+accelerator orchestration with a free license issued by InAccel, using this
 [link](/get-started/part2/#generate-a-license).
 
 ### 2. Install InAccel - H2O Python package

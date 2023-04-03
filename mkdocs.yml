@@ -1,4 +1,4 @@
-copyright: Copyright © 2018-2022 InAccel
+copyright: Copyright © 2018-2023 InAccel
 edit_uri: ''
 extra:
   analytics:
@@ -26,7 +26,6 @@ extra_css:
 - assets/stylesheets/extra.css
 - assets/stylesheets/load.css
 - assets/stylesheets/palette.css
-- assets/stylesheets/papercups.css
 extra_javascript:
 - https://cdn.jsdelivr.net/npm/typed.js@2.0.11
 - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML
@@ -83,12 +82,10 @@ nav:
 - 'Manuals':
   - 'InAccel':
     - 'Install':
-      - 'Linux platforms': install/linux.md
-      - 'Debian': install/debian.md
-      - 'RPM': install/rpm.md
+      - 'Overview': install/index.md
+      - 'Debian / Ubuntu': install/deb.md
+      - 'Amazon Linux / CentOS / Fedora / Red Hat Enterprise Linux': install/rpm.md
     - 'Setup':
-      - 'InAccel repository': setup/repo.md
-      - 'Dockerfile': setup/docker.md
       - 'Kubernetes': setup/kubernetes.md
   - 'Open-source projects':
     - 'Keras': project/keras.md

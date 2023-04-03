@@ -1,4 +1,4 @@
-name: gh-pages
+name: GitHub Pages
 on:
   push:
     branches:
@@ -7,7 +7,7 @@ jobs:
   pipeline:
     runs-on: ubuntu-latest
     container:
-      image: squidfunk/mkdocs-material:8.5.3
+      image: squidfunk/mkdocs-material:8.5.11
     steps:
     - name: Checkout
       uses: actions/checkout@v2

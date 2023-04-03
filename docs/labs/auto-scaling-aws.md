@@ -67,8 +67,8 @@ Below you will also find the full list of the required software packages:
 		must be installed.
 	* On every worker node
 		[Xilinx XRT](https://www.xilinx.com/products/design-tools/vitis/xrt.html)
-		is required accompanied by [InAccel](/install/linux) runtime (as the
-		default runtime).
+		is required accompanied by [InAccel](/install) runtime (as the default
+		runtime).
 	* [OpenVPN](https://openvpn.net/download-open-vpn) server and client
 		packages are also needed for the VPN connections on the master and
 		worker nodes, respectively.

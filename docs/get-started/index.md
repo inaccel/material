@@ -18,7 +18,7 @@ You will mainly learn how to:
 
 This tutorial assumes that you have already installed InAccel. If you don't have InAccel FPGA Operator installed, choose your preferred deployment environment to download and setup InAccel.
 
-[:material-docker: Docker](/install/linux){ .md-button } [:material-kubernetes: Kubernetes](https://artifacthub.io/packages/helm/inaccel/fpga-operator){ .md-button }
+[:material-docker: Docker](/install){ .md-button } [:material-kubernetes: Kubernetes](https://artifacthub.io/packages/helm/inaccel/fpga-operator){ .md-button }
 
 ## Start the Tutorial
 <!-- After having successfully installed InAccel toolset, you are ready to run the hello-world example of FPGA world, a simple vector addition application. -->

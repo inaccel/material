@@ -67,7 +67,7 @@ which bundles the aforementioned utilities and allows users to operate them from
 a single tool through straightforward commands.
 
 We are currently offering installation of `inaccel` through packages or
-repositories for [Debian-based](/install/debian) and [RHEL-based](/install/rpm)
+repositories for [Debian-based](/install/deb) and [RHEL-based](/install/rpm)
 distributions.
 
 ---

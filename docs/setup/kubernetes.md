@@ -1,7 +1,3 @@
----
-title: Kubernetes on FPGAs
----
-
 # Kubernetes on FPGAs
 
 *![time/embed](Estimated reading time: {X})*
@@ -26,10 +22,7 @@ heterogeneous FPGA clusters at scale, seamlessly.
 This section details the prerequisites for setting up a Kubernetes node. The
 prerequisites include:
 
-* The worker nodes must be provisioned with the Intel/Xilinx drivers.
-
-* Ensure that a supported version of Docker is installed before proceeding to
-	install the [InAccel package](/install/linux) (`inaccel`).
+* The worker nodes must be provisioned with the Intel FPGA drivers.
 
 ## Cluster Management
 
@@ -37,10 +30,10 @@ Kubernetes offers a number of features that cluster admins can leverage in order
 to better manage FPGAs:
 
 * [InAccel FPGA plugin](#device-plugin) allows you to expose the FPGA resources
-	to the Kubernetes API.
+to the Kubernetes API.
 
 * [Labels](#inaccel-labels) allow you to identify FPGA nodes and attributes to
-  steer workloads accordingly.
+steer workloads accordingly.
 
 The following sections describe how these features can be used.
 
@@ -94,14 +87,16 @@ Labels:             ...
                     ...
 ```
 
-With InAccel Coral in use, you can specify the FPGA platform version in the Pod
-spec:
+With InAccel FPGA Operator in use, you can specify the FPGA platform version in
+the Pod spec:
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
   name: jupyter-lab
+  labels:
+    inaccel/fpga: enabled
 spec:
   containers:
   - name: jupyter-lab
