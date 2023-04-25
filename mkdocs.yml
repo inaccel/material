@@ -89,6 +89,7 @@ nav:
       - 'Kubernetes': setup/kubernetes.md
   - 'Open-source projects':
     - 'Keras': project/keras.md
+    - 'LZ4': project/lz4.md
     - 'OpenSSL': project/openssl.md
     - 'scikit-learn': project/scikit-learn.md
     - 'TF Quant Finance': project/tf-quant-finance.md

@@ -6,8 +6,7 @@ title: Scalable, Portable and Distributed Gradient Boosting
 
 *![time/embed](Estimated reading time: {X})*
 
-[![keras](img/xgboost.png){: .center}](https://xgboost.ai)
-
+[![project](https://img.shields.io/static/v1?label=Project&message=XGBoost&style=for-the-badge)](https://xgboost.ai)
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/xgboost)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://test.pypi.org/project/inaccel-xgboost)
 

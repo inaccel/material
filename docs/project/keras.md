@@ -6,8 +6,7 @@ title: Deep Learning for humans
 
 *![time/embed](Estimated reading time: {X})*
 
-[![keras](img/keras.png){: .center}](https://keras.io)
-
+[![project](https://img.shields.io/static/v1?logo=Keras&color=d00000&label=Project&message=Keras&style=for-the-badge)](https://keras.io)
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/keras)
 [![pypi](https://img.shields.io/static/v1?logo=PyPI&color=3775a9&label=PyPI&message=Package&style=for-the-badge)](https://pypi.org/project/inaccel-keras)
 

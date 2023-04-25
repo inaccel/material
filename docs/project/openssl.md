@@ -6,8 +6,7 @@ title: TLS/SSL and crypto library
 
 *![time/embed](Estimated reading time: {X})*
 
-[![openssl](img/openssl.png){: .center}](https://openssl.org)
-
+[![project](https://img.shields.io/static/v1?logo=OpenSSL&color=721412&label=Project&message=OpenSSL&style=for-the-badge)](https://openssl.org)
 [![github](https://img.shields.io/static/v1?logo=GitHub&color=181717&label=GitHub&message=Code&style=for-the-badge)](https://github.com/inaccel/openssl)
 
 ## How to install
@@ -15,12 +14,14 @@ title: TLS/SSL and crypto library
 === "Debian"
 
 	```bash
+	curl -sS https://setup.inaccel.com/repository | sh
 	apt install inaccel-openssl
 	```
 
 === "RedHat"
 
 	```bash
+	curl -sS https://setup.inaccel.com/repository | sh
 	yum install inaccel-openssl
 	```
 
